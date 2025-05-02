@@ -1,0 +1,93 @@
+
+import React from 'react';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { useQuiz } from '@/context/QuizContext';
+import { questions } from '@/data/quizQuestions';
+
+interface ResultsScreenProps {
+  onRestartQuiz: () => void;
+}
+
+const ResultsScreen: React.FC<ResultsScreenProps> = ({ onRestartQuiz }) => {
+  const { score, totalAttempted, resetQuiz, getScorePercentage } = useQuiz();
+  
+  const scorePercentage = getScorePercentage();
+  
+  const handleRestartQuiz = () => {
+    resetQuiz();
+    onRestartQuiz();
+  };
+  
+  const getFeedbackMessage = () => {
+    if (scorePercentage >= 90) {
+      return "Outstanding! You're practically British!";
+    } else if (scorePercentage >= 75) {
+      return "Great job! You know your British culture well!";
+    } else if (scorePercentage >= 60) {
+      return "Good effort! You know quite a bit about life in the UK.";
+    } else if (scorePercentage >= 40) {
+      return "Not bad! You have some knowledge of British life.";
+    } else {
+      return "You might need to brush up on your British knowledge!";
+    }
+  };
+  
+  return (
+    <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-ukgrey">
+      <Card className="w-full max-w-md border-2 border-ukblue shadow-lg">
+        <CardHeader className="bg-ukblue text-white text-center">
+          <CardTitle className="text-2xl font-bold">Quiz Results</CardTitle>
+          <CardDescription className="text-gray-200">
+            Life in the UK
+          </CardDescription>
+        </CardHeader>
+        
+        <CardContent className="pt-6">
+          <div className="text-center space-y-4">
+            <div className="text-4xl font-bold">
+              {score.toFixed(1)} / {totalAttempted}
+            </div>
+            
+            <div className="text-xl">
+              {scorePercentage.toFixed(1)}%
+            </div>
+            
+            <div className="flex justify-center">
+              <div className="w-full max-w-sm bg-gray-200 h-4 rounded-full overflow-hidden">
+                <div 
+                  className={`h-full ${scorePercentage >= 60 ? 'bg-green-500' : scorePercentage >= 40 ? 'bg-yellow-500' : 'bg-ukred'}`}
+                  style={{ width: `${scorePercentage}%` }}
+                ></div>
+              </div>
+            </div>
+            
+            <p className="text-lg font-medium mt-4">
+              {getFeedbackMessage()}
+            </p>
+            
+            <div className="mt-2 text-left">
+              <p className="font-semibold mb-2">Quiz Overview:</p>
+              <ul className="text-sm space-y-1">
+                <li>Total questions: {questions.length}</li>
+                <li>Questions attempted: {totalAttempted}</li>
+                <li>Correct answers: {score.toFixed(1)}</li>
+              </ul>
+            </div>
+          </div>
+        </CardContent>
+        
+        <CardFooter className="flex justify-center pb-6 pt-2">
+          <Button 
+            onClick={handleRestartQuiz}
+            className="bg-ukred hover:bg-red-700 text-white w-full max-w-xs"
+          >
+            Restart Quiz
+          </Button>
+        </CardFooter>
+      </Card>
+    </div>
+  );
+};
+
+export default ResultsScreen;
