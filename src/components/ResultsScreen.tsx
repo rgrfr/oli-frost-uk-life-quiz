@@ -95,7 +95,7 @@ const ResultsScreen: React.FC<ResultsScreenProps> = ({ onRestartQuiz }) => {
     <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-ukgrey">
       <Card className="w-full max-w-md border-2 border-ukblue shadow-lg">
         <CardHeader className="bg-ukblue text-white text-center">
-          <CardTitle className="text-2xl font-bold">Quiz Results</CardTitle>
+          <CardTitle className="text-2xl font-bold">your results</CardTitle>
           <CardDescription className="text-gray-200">
             Life in the UK
           </CardDescription>
@@ -125,11 +125,11 @@ const ResultsScreen: React.FC<ResultsScreenProps> = ({ onRestartQuiz }) => {
             </p>
             
             <div className="mt-2 text-left">
-              <p className="font-semibold mb-2">Quiz Overview:</p>
+              <p className="font-semibold mb-2">quiz overview:</p>
               <ul className="text-sm space-y-1">
-                <li>Total questions: {questions.length}</li>
-                <li>Questions attempted: {totalAttempted}</li>
-                <li>Correct answers: {Math.floor(score)}</li>
+                <li>total questions: {questions.length}</li>
+                <li>questions attempted: {totalAttempted}</li>
+                <li>correct answers: {Math.floor(score)}</li>
               </ul>
             </div>
           </div>
@@ -147,7 +147,7 @@ const ResultsScreen: React.FC<ResultsScreenProps> = ({ onRestartQuiz }) => {
             <Button 
               className="bg-ukblue hover:bg-blue-800 text-white w-full"
             >
-              View Statistics
+              view population statistics
             </Button>
           </Link>
         </CardFooter>
