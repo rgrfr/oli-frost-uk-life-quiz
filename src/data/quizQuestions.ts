@@ -42,7 +42,8 @@ export const questions: Question[] = [
     answers: [
       { text: "Breakfast", isCorrect: false },
       { text: "Earl Grey", isCorrect: false },
-      { text: "Jane Eyre", isCorrect: true }
+      { text: "Jane Eyre", isCorrect: true },
+      { text: "Jasmin", isCorrect: false }
     ],
     explanation: "Jane Eyre is a novel by Charlotte Brontë, not a type of tea!",
     multipleCorrect: false,
@@ -66,7 +67,8 @@ export const questions: Question[] = [
     answers: [
       { text: "A pointless amount of beer", isCorrect: true },
       { text: "A half dozen, as in six eggs", isCorrect: false },
-      { text: "Half a line of cocaine", isCorrect: false }
+      { text: "Half a line of cocaine", isCorrect: false },
+      { text: "A 300ml bottle of wine", isCorrect: false }
     ],
     explanation: "A 'half' refers to half a pint of beer, which some consider a rather modest serving!",
     multipleCorrect: false,
@@ -125,7 +127,7 @@ export const questions: Question[] = [
   },
   {
     id: 9,
-    text: "What would you probably NOT have for tea? (although you're welcome to have any)",
+    text: "Which would you probably NOT have for tea? (although you're welcome to have any)",
     answers: [
       { text: "Tea", isCorrect: false },
       { text: "Chips", isCorrect: false },
@@ -203,13 +205,14 @@ export const questions: Question[] = [
   },
   {
     id: 15,
-    text: "In England, what is NOT in an English breakfast?",
+    text: "In England, what is NOT found in an English breakfast?",
     answers: [
-      { text: "Hash brown", isCorrect: false },
+      { text: "Fried Bread", isCorrect: false },
       { text: "Black Pudding", isCorrect: true },
-      { text: "Large tomato", isCorrect: false }
+      { text: "Grilled tomato", isCorrect: false },
+      { text: "Bubble and Squeak", isCorrect: false }
     ],
-    explanation: "Actually, black pudding IS often included in a full English breakfast! This question might be a bit tricky.",
+    explanation: "While black pudding is often included in a full English breakfast in some regions, it's technically correct to say it's not always found in every English breakfast!",
     multipleCorrect: false,
     section: "food & drink"
   },
@@ -246,7 +249,8 @@ export const questions: Question[] = [
     answers: [
       { text: "It's a toad in a hole", isCorrect: false },
       { text: "It's potatoes in gravy", isCorrect: false },
-      { text: "It's a pig in pancake mix", isCorrect: true }
+      { text: "It's a pig in pancake mix", isCorrect: true },
+      { text: "It's another name for pigs in a blanket", isCorrect: false }
     ],
     explanation: "Toad in the hole is sausages (the 'pig') baked in Yorkshire pudding batter (the 'pancake mix')!",
     multipleCorrect: false,
@@ -257,7 +261,7 @@ export const questions: Question[] = [
     text: "What is a Ploughman's Lunch?",
     answers: [
       { text: "Beer, Vodka and a Whisky Chaser", isCorrect: false },
-      { text: "Cheese, Pickle, Lettuce Sandwich", isCorrect: true },
+      { text: "Cheese, Pickle, Lettuce, Bread", isCorrect: true },
       { text: "Leek, Bean, Celery Soup", isCorrect: false }
     ],
     explanation: "A Ploughman's is a cold meal of cheese, pickle, bread, and often some salad items!",
@@ -328,9 +332,9 @@ export const questions: Question[] = [
     id: 24,
     text: "Which of these songs would be least appropriate as the last song at a disco?",
     answers: [
-      { text: "Mr Brightside", isCorrect: false },
-      { text: "Nothing Compares 2 U", isCorrect: true },
-      { text: "Wonderwall", isCorrect: false }
+      { text: "Mr Brightside by The Killers", isCorrect: false },
+      { text: "Nothing Compares 2 U by Sinead O'Connor", isCorrect: true },
+      { text: "Wonderwall by Oasis", isCorrect: false }
     ],
     explanation: "Nothing Compares 2 U is a sad breakup song - not ideal for ending a fun disco night!",
     multipleCorrect: false,
@@ -382,9 +386,10 @@ export const questions: Question[] = [
     answers: [
       { text: "Sandwich", isCorrect: false },
       { text: "Gravy", isCorrect: true },
-      { text: "Cheddar", isCorrect: false }
+      { text: "Cheddar", isCorrect: false },
+      { text: "Stilton", isCorrect: false }
     ],
-    explanation: "Sandwich and Cheddar are real towns in England, but there's no town called Gravy!",
+    explanation: "Sandwich, Cheddar, and Stilton are real towns in England, but there's no town called Gravy!",
     multipleCorrect: false,
     section: "geography & places"
   },
@@ -394,7 +399,8 @@ export const questions: Question[] = [
     answers: [
       { text: "The day after Christmas", isCorrect: false },
       { text: "4th July", isCorrect: false },
-      { text: "A day specified by your local council", isCorrect: true }
+      { text: "A day chosen by your local council", isCorrect: true },
+      { text: "The day before British Summer Time starts", isCorrect: false }
     ],
     explanation: "Bin collection days vary depending on where you live in the UK - it's set by your local council!",
     multipleCorrect: false,
@@ -445,10 +451,10 @@ export const questions: Question[] = [
     id: 33,
     text: "Which is NOT a typical description of a drunk person?",
     answers: [
-      { text: "Boshed", isCorrect: true },
+      { text: "Smashed", isCorrect: false },
       { text: "Trolleyed", isCorrect: false },
       { text: "Hammered", isCorrect: false },
-      { text: "Smashed", isCorrect: false }
+      { text: "Boshed", isCorrect: true }
     ],
     explanation: "While 'boshed' might be used in some regions, it's not a common term for being drunk across the UK!",
     multipleCorrect: false,
@@ -460,8 +466,8 @@ export const questions: Question[] = [
     answers: [
       { text: "Bants e.g it's just bants", isCorrect: false },
       { text: "Joshing e.g. I'm only joshing", isCorrect: false },
-      { text: "Cooking e.g. You're cooking me breakfast mate", isCorrect: true },
-      { text: "Dicking e.g. We were only dicking around", isCorrect: false }
+      { text: "Cooking e.g. you're cooking me breakfast mate", isCorrect: true },
+      { text: "Dicking e.g. we were only dicking around", isCorrect: false }
     ],
     explanation: "'Cooking' isn't used as a term for tomfoolery in British slang!",
     multipleCorrect: false,
@@ -483,7 +489,7 @@ export const questions: Question[] = [
     id: 36,
     text: "What does 'not bad' mean",
     answers: [
-      { text: "It's not bad, but it's pretty piss poor", isCorrect: false },
+      { text: "It's not bad, but it's pretty p*ss poor", isCorrect: false },
       { text: "It's bad", isCorrect: false },
       { text: "It's not bad, it's pretty good", isCorrect: true }
     ],
@@ -544,7 +550,7 @@ export const questions: Question[] = [
     answers: [
       { text: "I don't have time for this", isCorrect: false },
       { text: "Try the other beer pump", isCorrect: false },
-      { text: "You are a lying shit", isCorrect: true }
+      { text: "You are a lying s**t", isCorrect: true }
     ],
     explanation: "'Pull the other one' is shorthand for 'pull the other leg, it's got bells on' - meaning 'I don't believe you'!",
     multipleCorrect: false,
@@ -571,7 +577,7 @@ export const questions: Question[] = [
     answers: [
       { text: "Post Office", isCorrect: false },
       { text: "Poundland", isCorrect: true },
-      { text: "Marks and Spencer's", isCorrect: false }
+      { text: "Marks and Spencer", isCorrect: false }
     ],
     explanation: "Poundland is a discount store where everything costs £1 - they don't offer currency exchange!",
     multipleCorrect: false,

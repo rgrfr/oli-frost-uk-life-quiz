@@ -28,6 +28,7 @@ const QuizQuestion: React.FC<QuizQuestionProps> = ({ onQuizEnd }) => {
 
   const [isAnimating, setIsAnimating] = useState(false);
   const [animationDirection, setAnimationDirection] = useState<'in' | 'out'>('in');
+  const [showCorrectAnimation, setShowCorrectAnimation] = useState(false);
   const question = getCurrentQuestion();
 
   const handleNextQuestion = () => {
@@ -38,6 +39,7 @@ const QuizQuestion: React.FC<QuizQuestionProps> = ({ onQuizEnd }) => {
 
     setAnimationDirection('out');
     setIsAnimating(true);
+    setShowCorrectAnimation(false);
 
     setTimeout(() => {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
@@ -50,6 +52,7 @@ const QuizQuestion: React.FC<QuizQuestionProps> = ({ onQuizEnd }) => {
 
     setAnimationDirection('out');
     setIsAnimating(true);
+    setShowCorrectAnimation(false);
 
     setTimeout(() => {
       setCurrentQuestionIndex(currentQuestionIndex - 1);
@@ -60,6 +63,7 @@ const QuizQuestion: React.FC<QuizQuestionProps> = ({ onQuizEnd }) => {
   const handleCheckAnswer = () => {
     if (!question) return;
     checkAnswer(question.id);
+    setShowCorrectAnimation(true);
   };
 
   useEffect(() => {
@@ -86,7 +90,7 @@ const QuizQuestion: React.FC<QuizQuestionProps> = ({ onQuizEnd }) => {
     }
     
     if (correctStatus === true) {
-      return `${baseClasses} bg-ukblue text-white border-ukblue`;
+      return `${baseClasses} ${showCorrectAnimation ? 'bg-ukblue text-white border-ukblue animate-scale-in' : 'bg-ukblue text-white border-ukblue'}`;
     }
     
     if (correctStatus === false && isSelected) {
@@ -103,6 +107,54 @@ const QuizQuestion: React.FC<QuizQuestionProps> = ({ onQuizEnd }) => {
     : '';
 
   const progressPercentage = ((currentQuestionIndex + 1) / questions.length) * 100;
+
+  // Function to get an appropriate icon for the question topic
+  const getTopicIcon = () => {
+    if (!isChecked || !questionResult) return null;
+    
+    // Simple map of keywords to ASCII art/symbols
+    const keywords = [
+      { term: 'sausage roll', icon: '🥐' },
+      { term: 'tea', icon: '🍵' },
+      { term: 'beer', icon: '🍺' },
+      { term: 'cake', icon: '🍰' },
+      { term: 'ice cream', icon: '🍦' },
+      { term: 'fish', icon: '🐟' },
+      { term: 'peas', icon: '🌱' },
+      { term: 'potato', icon: '🥔' },
+      { term: 'apple', icon: '🍎' },
+      { term: 'cheese', icon: '🧀' },
+      { term: 'chocolate', icon: '🍫' },
+      { term: 'pudding', icon: '🍮' },
+      { term: 'flowerpot', icon: '🪴' },
+      { term: 'badge', icon: '🏅' },
+      { term: 'theme park', icon: '🎢' },
+      { term: 'football', icon: '⚽' },
+      { term: 'plug', icon: '🔌' },
+      { term: 'birds', icon: '🐦' },
+      { term: 'squirrel', icon: '🐿️' },
+      { term: 'owl', icon: '🦉' },
+      { term: 'coin', icon: '💰' },
+      { term: 'shop', icon: '🛒' },
+    ];
+    
+    // Check if the question or correct answers contain any keywords
+    const questionText = question.text.toLowerCase();
+    const correctAnswerText = question.answers
+      .filter(answer => answer.isCorrect)
+      .map(answer => answer.text.toLowerCase())
+      .join(' ');
+    
+    const textToCheck = questionText + ' ' + correctAnswerText;
+    
+    for (const { term, icon } of keywords) {
+      if (textToCheck.includes(term.toLowerCase())) {
+        return icon;
+      }
+    }
+    
+    return '🇬🇧'; // Default icon if no matches
+  };
 
   return (
     <div className="min-h-screen flex flex-col items-center p-4 bg-ukgrey">
@@ -147,35 +199,41 @@ const QuizQuestion: React.FC<QuizQuestionProps> = ({ onQuizEnd }) => {
               </div>
             ))}
 
+            {/* Navigation buttons - now moved BEFORE the feedback */}
+            <div className="pt-4 flex justify-between">
+              <Button 
+                variant="outline" 
+                onClick={handlePreviousQuestion}
+                disabled={currentQuestionIndex === 0}
+                className="flex items-center gap-1"
+              >
+                <ChevronLeft size={16} />
+                <span>back</span>
+              </Button>
+
+              <Button 
+                onClick={isChecked ? handleNextQuestion : handleCheckAnswer}
+                className="bg-ukred hover:bg-red-700 text-white flex items-center gap-1"
+              >
+                <span>{isChecked ? 'next question' : 'check answer'}</span>
+                {isChecked && <ChevronRight size={16} />}
+              </Button>
+            </div>
+
+            {/* Feedback - now displayed AFTER the navigation buttons */}
             {isChecked && (
-              <div className="mt-4 p-3 border-l-4 rounded bg-gray-50">
-                <p className="font-semibold">
-                  {questionResult ? "Correct!" : "Incorrect!"}
-                </p>
+              <div className={`mt-4 p-3 border-l-4 rounded bg-gray-50 ${showCorrectAnimation && questionResult ? 'animate-fade-in' : ''}`}>
+                <div className="flex items-center">
+                  <p className="font-semibold">
+                    {questionResult ? "Correct!" : "Incorrect!"}
+                  </p>
+                  {questionResult && getTopicIcon() && (
+                    <span className="ml-2 text-2xl animate-scale-in">{getTopicIcon()}</span>
+                  )}
+                </div>
                 <p className="mt-1 text-gray-700">{question.explanation}</p>
               </div>
             )}
-          </div>
-
-          {/* Navigation buttons */}
-          <div className="p-4 pt-2 flex justify-between">
-            <Button 
-              variant="outline" 
-              onClick={handlePreviousQuestion}
-              disabled={currentQuestionIndex === 0}
-              className="flex items-center gap-1"
-            >
-              <ChevronLeft size={16} />
-              <span>back</span>
-            </Button>
-
-            <Button 
-              onClick={isChecked ? handleNextQuestion : handleCheckAnswer}
-              className="bg-ukred hover:bg-red-700 text-white flex items-center gap-1"
-            >
-              <span>{isChecked ? 'next question' : 'check answer'}</span>
-              {isChecked && <ChevronRight size={16} />}
-            </Button>
           </div>
         </Card>
 
