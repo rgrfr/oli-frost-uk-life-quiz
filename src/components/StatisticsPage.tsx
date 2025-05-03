@@ -126,7 +126,8 @@ const StatisticsPage: React.FC = () => {
   }));
 
   const handleBackToResults = () => {
-    navigate('/');
+    // Navigate specifically to results page with state indicating we want to show results
+    navigate('/', { state: { showResults: true } });
   };
 
   return (
@@ -263,7 +264,7 @@ const StatisticsPage: React.FC = () => {
               className="bg-ukred hover:bg-red-700 text-white"
               onClick={handleBackToResults}
             >
-              try again
+              back to results
             </Button>
           </CardFooter>
         </Card>

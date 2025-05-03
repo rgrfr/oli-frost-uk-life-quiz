@@ -66,6 +66,23 @@ const QuizQuestion: React.FC<QuizQuestionProps> = ({ onQuizEnd }) => {
     setShowCorrectAnimation(true);
   };
 
+  // New function to handle answer selection with auto-checking for single correct answers
+  const handleAnswerSelection = (questionId: number, answerIndex: number) => {
+    if (isQuestionChecked(questionId)) return;
+    
+    // First, select the answer
+    selectAnswer(questionId, answerIndex);
+    
+    // If it's a single-answer question and the selected answer is correct, auto-check
+    if (question && !question.multipleCorrect && question.answers[answerIndex].isCorrect) {
+      // Small timeout to allow the UI to update with the selection first
+      setTimeout(() => {
+        checkAnswer(questionId);
+        setShowCorrectAnimation(true);
+      }, 150);
+    }
+  };
+
   useEffect(() => {
     // Reset animation state after component updates
     if (isAnimating) {
@@ -191,7 +208,7 @@ const QuizQuestion: React.FC<QuizQuestionProps> = ({ onQuizEnd }) => {
               <div 
                 key={index}
                 className={getAnswerClasses(index)}
-                onClick={() => !isChecked && selectAnswer(question.id, index)}
+                onClick={() => !isChecked && handleAnswerSelection(question.id, index)}
               >
                 <span className="flex-grow">{answer.text}</span>
                 {isChecked && answer.isCorrect && <Check size={20} className="ml-2" />}
@@ -199,7 +216,7 @@ const QuizQuestion: React.FC<QuizQuestionProps> = ({ onQuizEnd }) => {
               </div>
             ))}
 
-            {/* Navigation buttons - now moved BEFORE the feedback */}
+            {/* Navigation buttons - BEFORE the feedback */}
             <div className="pt-4 flex justify-between">
               <Button 
                 variant="outline" 
@@ -220,7 +237,7 @@ const QuizQuestion: React.FC<QuizQuestionProps> = ({ onQuizEnd }) => {
               </Button>
             </div>
 
-            {/* Feedback - now displayed AFTER the navigation buttons */}
+            {/* Feedback - AFTER the navigation buttons */}
             {isChecked && (
               <div className={`mt-4 p-3 border-l-4 rounded bg-gray-50 ${showCorrectAnimation && questionResult ? 'animate-fade-in' : ''}`}>
                 <div className="flex items-center">
