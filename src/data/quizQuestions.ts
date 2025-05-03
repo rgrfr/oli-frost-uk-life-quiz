@@ -152,7 +152,7 @@ export const questions: Question[] = [
   },
   {
     id: 11,
-    text: "Which of these is NOT considered one of England's specialities?",
+    text: "Which of these is NOT considered one of Britain's specialities?",
     answers: [
       { text: "Chips and gravy", isCorrect: false },
       { text: "Pie and a pint", isCorrect: false },
@@ -479,9 +479,9 @@ export const questions: Question[] = [
     answers: [
       { text: "I am your father", isCorrect: false },
       { text: "Your mum", isCorrect: false },
-      { text: "Yes I am", isCorrect: true }
+      { text: "You ain't my mother!", isCorrect: true },
     ],
-    explanation: "The comically incorrect response 'Yes I am' is often used when someone states the obvious!",
+    explanation: "The response 'You aint my mother' is the last line from a pivotal and dramatic moment in Eastenders.",
     multipleCorrect: false,
     section: "language & social"
   },
@@ -520,7 +520,7 @@ export const questions: Question[] = [
       { text: "Bessie mate", isCorrect: true },
       { text: "The Old Ball and Chain", isCorrect: false }
     ],
-    explanation: "'Bessie mate' isn't a common term for a wife in Britain!",
+    explanation: "'Bessie mate' is probable but it isn't a common term for a wife in Britain!",
     multipleCorrect: false,
     section: "language & social"
   },
@@ -550,7 +550,7 @@ export const questions: Question[] = [
     answers: [
       { text: "I don't have time for this", isCorrect: false },
       { text: "Try the other beer pump", isCorrect: false },
-      { text: "You are a lying s**t", isCorrect: true }
+      { text: "I don't beleive you", isCorrect: true }
     ],
     explanation: "'Pull the other one' is shorthand for 'pull the other leg, it's got bells on' - meaning 'I don't believe you'!",
     multipleCorrect: false,
@@ -578,8 +578,9 @@ export const questions: Question[] = [
       { text: "Post Office", isCorrect: false },
       { text: "Poundland", isCorrect: true },
       { text: "Marks and Spencer", isCorrect: false }
+      { text: "The Money Exchange", isCorrect: false }
     ],
-    explanation: "Poundland is a discount store where everything costs £1 - they don't offer currency exchange!",
+    explanation: "Poundland is a discount store where things cost £1 or so - they don't offer currency exchange!",
     multipleCorrect: false,
     section: "shops & commerce"
   },
