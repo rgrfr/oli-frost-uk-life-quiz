@@ -110,7 +110,10 @@ const QuizQuestion: React.FC<QuizQuestionProps> = ({ onQuizEnd }) => {
         {/* Progress and score */}
         <div className="flex justify-between items-center mb-2 text-sm text-gray-600">
           <span>question {currentQuestionIndex + 1} of {questions.length}</span>
-          <span>score: {score.toFixed(1)}/{totalAttempted}</span>
+          <div className="px-3 py-1 bg-ukred text-white rounded">
+            {question.section}
+          </div>
+          <span>score: {Math.floor(score)}/{totalAttempted}</span>
         </div>
 
         <div className="w-full bg-gray-200 h-2 mb-4 rounded-full overflow-hidden">

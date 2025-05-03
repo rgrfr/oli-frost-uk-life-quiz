@@ -9,7 +9,80 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      [_ in never]: never
+      content: {
+        Row: {
+          created_at: string
+          id: number
+        }
+        Insert: {
+          created_at?: string
+          id?: number
+        }
+        Update: {
+          created_at?: string
+          id?: number
+        }
+        Relationships: []
+      }
+      question_results: {
+        Row: {
+          attempt_id: string
+          created_at: string | null
+          id: string
+          is_correct: boolean
+          question_id: number
+          section: string
+        }
+        Insert: {
+          attempt_id: string
+          created_at?: string | null
+          id?: string
+          is_correct: boolean
+          question_id: number
+          section: string
+        }
+        Update: {
+          attempt_id?: string
+          created_at?: string | null
+          id?: string
+          is_correct?: boolean
+          question_id?: number
+          section?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "question_results_attempt_id_fkey"
+            columns: ["attempt_id"]
+            isOneToOne: false
+            referencedRelation: "quiz_attempts"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      quiz_attempts: {
+        Row: {
+          created_at: string | null
+          id: string
+          score: number
+          score_percentage: number
+          total_questions: number
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          score: number
+          score_percentage: number
+          total_questions: number
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          score?: number
+          score_percentage?: number
+          total_questions?: number
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

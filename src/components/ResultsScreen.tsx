@@ -4,13 +4,17 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from "@/components/ui/button";
 import { useQuiz } from '@/context/QuizContext';
 import { questions } from '@/data/quizQuestions';
+import { Link } from 'react-router-dom';
+import { supabase } from '@/integrations/supabase/client';
+import { useToast } from '@/hooks/use-toast';
 
 interface ResultsScreenProps {
   onRestartQuiz: () => void;
 }
 
 const ResultsScreen: React.FC<ResultsScreenProps> = ({ onRestartQuiz }) => {
-  const { score, totalAttempted, resetQuiz, getScorePercentage } = useQuiz();
+  const { score, totalAttempted, resetQuiz, getScorePercentage, selectedAnswers, checkedQuestions } = useQuiz();
+  const { toast } = useToast();
   
   const scorePercentage = getScorePercentage();
   
@@ -32,6 +36,60 @@ const ResultsScreen: React.FC<ResultsScreenProps> = ({ onRestartQuiz }) => {
       return "You might need to brush up on your British knowledge!";
     }
   };
+
+  React.useEffect(() => {
+    const saveResults = async () => {
+      if (totalAttempted === 0) return;
+      
+      // Save the quiz attempt
+      const { data: attemptData, error: attemptError } = await supabase
+        .from('quiz_attempts')
+        .insert({
+          score: score,
+          total_questions: totalAttempted,
+          score_percentage: scorePercentage
+        })
+        .select('id')
+        .single();
+      
+      if (attemptError) {
+        console.error('Error saving quiz attempt:', attemptError);
+        toast({
+          title: "Failed to save results",
+          description: "Your results couldn't be saved to the statistics database.",
+          variant: "destructive"
+        });
+        return;
+      }
+      
+      // Save individual question results
+      const questionResults = checkedQuestions.map(questionId => {
+        const question = questions.find(q => q.id === questionId);
+        const isCorrect = question ? (selectedAnswers[questionId] && 
+          question.answers.every((answer, idx) => 
+            (answer.isCorrect === (selectedAnswers[questionId]?.includes(idx) || false)))) : false;
+            
+        return {
+          attempt_id: attemptData.id,
+          question_id: questionId,
+          section: question?.section || 'unknown',
+          is_correct: isCorrect
+        };
+      });
+      
+      if (questionResults.length > 0) {
+        const { error: resultsError } = await supabase
+          .from('question_results')
+          .insert(questionResults);
+          
+        if (resultsError) {
+          console.error('Error saving question results:', resultsError);
+        }
+      }
+    };
+    
+    saveResults();
+  }, []);
   
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-ukgrey">
@@ -46,7 +104,7 @@ const ResultsScreen: React.FC<ResultsScreenProps> = ({ onRestartQuiz }) => {
         <CardContent className="pt-6">
           <div className="text-center space-y-4">
             <div className="text-4xl font-bold">
-              {score.toFixed(1)} / {totalAttempted}
+              {Math.floor(score)} / {totalAttempted}
             </div>
             
             <div className="text-xl">
@@ -71,19 +129,27 @@ const ResultsScreen: React.FC<ResultsScreenProps> = ({ onRestartQuiz }) => {
               <ul className="text-sm space-y-1">
                 <li>Total questions: {questions.length}</li>
                 <li>Questions attempted: {totalAttempted}</li>
-                <li>Correct answers: {score.toFixed(1)}</li>
+                <li>Correct answers: {Math.floor(score)}</li>
               </ul>
             </div>
           </div>
         </CardContent>
         
-        <CardFooter className="flex justify-center pb-6 pt-2">
+        <CardFooter className="flex flex-col justify-center gap-3 pb-6 pt-2">
           <Button 
             onClick={handleRestartQuiz}
             className="bg-ukred hover:bg-red-700 text-white w-full max-w-xs"
           >
             Restart Quiz
           </Button>
+          
+          <Link to="/statistics" className="w-full max-w-xs">
+            <Button 
+              className="bg-ukblue hover:bg-blue-800 text-white w-full"
+            >
+              View Statistics
+            </Button>
+          </Link>
         </CardFooter>
       </Card>
     </div>
