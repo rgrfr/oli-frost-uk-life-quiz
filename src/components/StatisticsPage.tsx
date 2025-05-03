@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from 'lucide-react';
@@ -19,6 +19,7 @@ type QuizStatistics = {
 };
 
 const StatisticsPage: React.FC = () => {
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [statistics, setStatistics] = useState<QuizStatistics>({
     totalAttempts: 0,
@@ -124,17 +125,24 @@ const StatisticsPage: React.FC = () => {
     fill: COLORS[index % COLORS.length]
   }));
 
+  const handleBackToResults = () => {
+    navigate('/');
+  };
+
   return (
     <div className="min-h-screen flex flex-col items-center p-4 bg-ukgrey">
       <div className="w-full max-w-4xl">
         <Card className="w-full border-2 border-ukblue shadow-lg mb-4">
           <CardHeader className="bg-ukblue text-white">
             <div className="flex items-center">
-              <Link to="/" className="mr-4">
-                <Button variant="ghost" size="icon" className="text-white hover:bg-blue-800">
-                  <ArrowLeft />
-                </Button>
-              </Link>
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                className="text-white hover:bg-blue-800 mr-4"
+                onClick={handleBackToResults}
+              >
+                <ArrowLeft />
+              </Button>
               <div>
                 <CardTitle className="text-2xl">population statistics</CardTitle>
                 <CardDescription className="text-gray-200">
@@ -251,13 +259,12 @@ const StatisticsPage: React.FC = () => {
           </CardContent>
           
           <CardFooter className="flex justify-center pb-6 pt-2">
-            <Link to="/">
-              <Button 
-                className="bg-ukred hover:bg-red-700 text-white"
-              >
-                back to your results
-              </Button>
-            </Link>
+            <Button 
+              className="bg-ukred hover:bg-red-700 text-white"
+              onClick={handleBackToResults}
+            >
+              back to your results
+            </Button>
           </CardFooter>
         </Card>
       </div>
