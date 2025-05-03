@@ -474,11 +474,11 @@ export const questions: Question[] = [
   },
   {
     id: 35,
-    text: "Which is the correct reply to the following statement, \"you're not my mother!\"",
+    text: "Which is the correct reply to the following statement, \"you ain't my muvva!\"",
     answers: [
       { text: "I am your father", isCorrect: false },
       { text: "Your mum", isCorrect: false },
-      { text: "You ain't my mother!", isCorrect: true },
+      { text: "Yes I am!", isCorrect: true },
     ],
     explanation: "The response 'You aint my mother' is the last line from a pivotal and dramatic moment in Eastenders.",
     multipleCorrect: false,
