@@ -263,7 +263,7 @@ const StatisticsPage: React.FC = () => {
               className="bg-ukred hover:bg-red-700 text-white"
               onClick={handleBackToResults}
             >
-              back to your results
+              try again
             </Button>
           </CardFooter>
         </Card>
