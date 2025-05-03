@@ -29,9 +29,9 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStartQuiz }) => {
         
         <CardContent className="pt-6 pb-4">
           <div className="space-y-4">
-            <p>Welcome! This fun and educational quiz will test your knowledge about British culture, customs, and daily life.</p>
+            <p>Welcome to our fun and educational quiz to test your knowledge about British culture, customs, and daily life.</p>
             
-            <p>There are <span className="font-semibold">{questions.length}</span> questions around:</p>
+            <p>There are <span className="font-semibold">{questions.length}</span> questions - about 5-10 minutes on:</p>
             
             <ul className="list-disc pl-5 space-y-1">
               <li>Food & Drink</li>
@@ -42,7 +42,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStartQuiz }) => {
               <li>Nature</li>
             </ul>
             
-            <p>Get ready to test your knowledge about life in the United Kingdom ...</p>
+            <p>Ready ...?</p>
           </div>
         </CardContent>
         
