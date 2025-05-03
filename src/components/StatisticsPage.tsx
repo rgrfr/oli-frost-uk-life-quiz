@@ -136,7 +136,7 @@ const StatisticsPage: React.FC = () => {
                 </Button>
               </Link>
               <div>
-                <CardTitle className="text-2xl">Quiz Statistics</CardTitle>
+                <CardTitle className="text-2xl">population statistics</CardTitle>
                 <CardDescription className="text-gray-200">
                   How you compare with other quiz takers
                 </CardDescription>
@@ -146,7 +146,7 @@ const StatisticsPage: React.FC = () => {
           
           <CardContent className="pt-6">
             {loading ? (
-              <div className="text-center p-10">Loading statistics...</div>
+              <div className="text-center p-10">loading statistics...</div>
             ) : statistics.totalAttempts === 0 ? (
               <div className="text-center p-10">
                 No quiz data yet. Complete a quiz to see statistics!
@@ -155,31 +155,31 @@ const StatisticsPage: React.FC = () => {
               <div className="space-y-8">
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
                   <div className="bg-gray-50 p-4 rounded-lg text-center">
-                    <h3 className="text-lg font-medium text-gray-500">Total Attempts</h3>
+                    <h3 className="text-lg font-medium text-gray-500">total attempts</h3>
                     <p className="text-2xl font-bold">{statistics.totalAttempts}</p>
                   </div>
                   
                   <div className="bg-gray-50 p-4 rounded-lg text-center">
-                    <h3 className="text-lg font-medium text-gray-500">Average Score</h3>
+                    <h3 className="text-lg font-medium text-gray-500">average score</h3>
                     <p className="text-2xl font-bold">{statistics.averageScore.toFixed(1)}%</p>
                   </div>
                   
                   <div className="bg-gray-50 p-4 rounded-lg text-center">
-                    <h3 className="text-lg font-medium text-gray-500">Highest Score</h3>
+                    <h3 className="text-lg font-medium text-gray-500">highest score</h3>
                     <p className="text-2xl font-bold">{statistics.highestScore.toFixed(1)}%</p>
                   </div>
                   
                   <div className="bg-gray-50 p-4 rounded-lg text-center">
-                    <h3 className="text-lg font-medium text-gray-500">Lowest Score</h3>
+                    <h3 className="text-lg font-medium text-gray-500">lowest score</h3>
                     <p className="text-2xl font-bold">{statistics.lowestScore.toFixed(1)}%</p>
                   </div>
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-bold mb-2">Section Performance</h3>
+                  <h3 className="text-xl font-bold mb-2">section performance</h3>
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                     <div className="bg-white p-4 rounded-lg shadow">
-                      <h4 className="text-lg font-medium mb-2">By Category</h4>
+                      <h4 className="text-lg font-medium mb-2">by category</h4>
                       <div style={{ width: '100%', height: 300 }}>
                         <ChartContainer config={{}} className="aspect-square h-full">
                           <PieChart>
@@ -204,7 +204,7 @@ const StatisticsPage: React.FC = () => {
                     </div>
                     
                     <div className="bg-white p-4 rounded-lg shadow">
-                      <h4 className="text-lg font-medium mb-2">Correct vs. Incorrect</h4>
+                      <h4 className="text-lg font-medium mb-2">correct vs. incorrect</h4>
                       <div style={{ width: '100%', height: 300 }}>
                         <ChartContainer config={{}} className="aspect-[4/3] h-full">
                           <BarChart
@@ -224,14 +224,14 @@ const StatisticsPage: React.FC = () => {
                 </div>
                 
                 <div>
-                  <h3 className="text-xl font-bold mb-2">Section Breakdown</h3>
+                  <h3 className="text-xl font-bold mb-2">section breakdown</h3>
                   <Table>
                     <TableHeader>
                       <TableRow>
                         <TableHead>Section</TableHead>
                         <TableHead>Correct</TableHead>
                         <TableHead>Incorrect</TableHead>
-                        <TableHead className="text-right">Score</TableHead>
+                        <TableHead className="text-right">score</TableHead>
                       </TableRow>
                     </TableHeader>
                     <TableBody>
@@ -255,7 +255,7 @@ const StatisticsPage: React.FC = () => {
               <Button 
                 className="bg-ukred hover:bg-red-700 text-white"
               >
-                Back to Results
+                back to your results
               </Button>
             </Link>
           </CardFooter>
