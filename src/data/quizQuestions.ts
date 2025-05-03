@@ -1,4 +1,3 @@
-
 export interface Answer {
   text: string;
   isCorrect: boolean;
@@ -577,7 +576,7 @@ export const questions: Question[] = [
     answers: [
       { text: "Post Office", isCorrect: false },
       { text: "Poundland", isCorrect: true },
-      { text: "Marks and Spencer", isCorrect: false }
+      { text: "Marks and Spencer", isCorrect: false },
       { text: "The Money Exchange", isCorrect: false }
     ],
     explanation: "Poundland is a discount store where things cost £1 or so - they don't offer currency exchange!",
