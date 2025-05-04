@@ -1,3 +1,4 @@
+
 export interface Answer {
   text: string;
   isCorrect: boolean;
@@ -93,7 +94,7 @@ export const questions: Question[] = [
     answers: [
       { text: "Exceedingly good cakes", isCorrect: true },
       { text: "Wonderful fried fish", isCorrect: false },
-      { text: "Exceptional Yorkshire Puddings", isCorrect: false }
+      { text: "Exceptional Yorkshire Puddings", isCorrect: false },
       { text: "The very best Kippers", isCorrect: false }
     ],
     explanation: "Mr Kipling's slogan is 'exceedingly good cakes' - they're a famous cake brand in the UK!",
@@ -310,7 +311,7 @@ export const questions: Question[] = [
     answers: [
       { text: "A warm fruity sponge pudding", isCorrect: true },
       { text: "A classic tale from English folklore", isCorrect: false },
-      { text: "An embarrassing ailment", isCorrect: false }
+      { text: "An embarrassing ailment", isCorrect: false },
       { text: "A Dalmation named Richard", isCorrect: false }
     ],
     explanation: "Spotted dick is a traditional British steamed sponge pudding containing dried fruit (the 'spots')!",
