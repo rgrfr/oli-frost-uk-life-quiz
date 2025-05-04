@@ -42,7 +42,7 @@ export const questions: Question[] = [
       { text: "Breakfast", isCorrect: false },
       { text: "Earl Grey", isCorrect: false },
       { text: "Jane Eyre", isCorrect: true },
-      { text: "Jasmin", isCorrect: false }
+      { text: "Jasmine", isCorrect: false }
     ],
     explanation: "Jane Eyre is a novel by Charlotte Brontë, not a type of tea!",
     multipleCorrect: false,
@@ -94,6 +94,7 @@ export const questions: Question[] = [
       { text: "Exceedingly good cakes", isCorrect: true },
       { text: "Wonderful fried fish", isCorrect: false },
       { text: "Exceptional Yorkshire Puddings", isCorrect: false }
+      { text: "The very best Kippers", isCorrect: false }
     ],
     explanation: "Mr Kipling's slogan is 'exceedingly good cakes' - they're a famous cake brand in the UK!",
     multipleCorrect: false,
@@ -151,12 +152,12 @@ export const questions: Question[] = [
   },
   {
     id: 11,
-    text: "Which of these is NOT considered one of Britain's specialities?",
+    text: "Which of these is NOT considered one of England's specialities?",
     answers: [
       { text: "Chips and gravy", isCorrect: false },
       { text: "Pie and a pint", isCorrect: false },
       { text: "Deconstructed shepherd's pie", isCorrect: true },
-      { text: "Fried mars bars", isCorrect: false }
+      { text: "Fried Mars bars", isCorrect: false }
     ],
     explanation: "Deconstructed shepherd's pie is a fancy modern invention, not a traditional English specialty!",
     multipleCorrect: false,
@@ -261,10 +262,10 @@ export const questions: Question[] = [
     text: "What is a Ploughman's Lunch?",
     answers: [
       { text: "Beer, Vodka and a Whisky Chaser", isCorrect: false },
-      { text: "Cheese, Pickle, Lettuce, Bread", isCorrect: true },
+      { text: "Cheese, Pickle, Onion, Bread", isCorrect: true },
       { text: "Leek, Bean, Celery Soup", isCorrect: false }
     ],
-    explanation: "A Ploughman's is a cold meal of cheese, pickle, bread, and often some salad items!",
+    explanation: "A Ploughman's is a cold meal of cheese, pickle, pickled onion, bread, and often some salad items!",
     multipleCorrect: false,
     section: "food & drink"
   },
@@ -310,6 +311,7 @@ export const questions: Question[] = [
       { text: "A warm fruity sponge pudding", isCorrect: true },
       { text: "A classic tale from English folklore", isCorrect: false },
       { text: "An embarrassing ailment", isCorrect: false }
+      { text: "A Dalmation named Richard", isCorrect: false }
     ],
     explanation: "Spotted dick is a traditional British steamed sponge pudding containing dried fruit (the 'spots')!",
     multipleCorrect: false,
