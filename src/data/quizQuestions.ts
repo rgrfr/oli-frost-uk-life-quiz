@@ -204,12 +204,13 @@ export const questions: Question[] = [
   },
   {
     id: 15,
-    text: "In England, what is NOT found in an English breakfast?",
+    text: "Which of these are you LEAST likely to find in a Full English breakfast?",
     answers: [
       { text: "Fried Bread", isCorrect: false },
-      { text: "Black Pudding", isCorrect: true },
+      { text: "Black Pudding", isCorrect: false },
       { text: "Grilled tomato", isCorrect: false },
-      { text: "Bubble and Squeak", isCorrect: false }
+      { text: "Pancakes", isCorrect: true }
+      { text: "Beans", isCorrect: false }
     ],
     explanation: "While black pudding is often included in a full English breakfast in some regions, it's technically correct to say it's not always found in every English breakfast!",
     multipleCorrect: false,
