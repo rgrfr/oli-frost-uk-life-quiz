@@ -189,7 +189,7 @@ const StatisticsPage: React.FC = () => {
                   <div className="grid grid-cols-1 gap-6">
                     <div className="bg-white p-4 rounded-lg shadow">
                       <h4 className="text-lg font-medium mb-2">by category</h4>
-                      <div className="mx-auto" style={{ width: '100%', height: 350 }}>
+                      <div className="mx-auto" style={{ width: '180%', height: 350, maxWidth: '800px' }}>
                         <ChartContainer config={{}} className="aspect-square h-full">
                           <PieChart>
                             <Pie
