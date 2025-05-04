@@ -94,7 +94,7 @@ export const questions: Question[] = [
     answers: [
       { text: "Exceedingly good cakes", isCorrect: true },
       { text: "Wonderful fried fish", isCorrect: false },
-      { text: "Exceptional Yorkshire Puddings", isCorrect: false },
+      { text: "Exceptional Yorkshire Pudding", isCorrect: false },
       { text: "The very best Kippers", isCorrect: false }
     ],
     explanation: "Mr Kipling's slogan is 'exceedingly good cakes' - they're a famous cake brand in the UK!",
@@ -211,7 +211,7 @@ export const questions: Question[] = [
       { text: "Fried Bread", isCorrect: false },
       { text: "Black Pudding", isCorrect: false },
       { text: "Grilled tomato", isCorrect: false },
-      { text: "Pancakes", isCorrect: true }
+      { text: "Pancakes", isCorrect: true },
       { text: "Beans", isCorrect: false }
     ],
     explanation: "While black pudding is often included in a full English breakfast in some regions, it's technically correct to say it's not always found in every English breakfast!",
