@@ -186,10 +186,10 @@ const StatisticsPage: React.FC = () => {
 
                 <div>
                   <h3 className="text-xl font-bold mb-2">section performance</h3>
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 gap-6">
                     <div className="bg-white p-4 rounded-lg shadow">
                       <h4 className="text-lg font-medium mb-2">by category</h4>
-                      <div style={{ width: '100%', height: 300 }}>
+                      <div className="mx-auto" style={{ width: '100%', height: 350 }}>
                         <ChartContainer config={{}} className="aspect-square h-full">
                           <PieChart>
                             <Pie
@@ -198,7 +198,7 @@ const StatisticsPage: React.FC = () => {
                               dataKey="value"
                               cx="50%"
                               cy="50%"
-                              outerRadius={80}
+                              outerRadius={120}
                               label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
                             >
                               {pieData.map((entry, index) => (
@@ -214,14 +214,14 @@ const StatisticsPage: React.FC = () => {
                     
                     <div className="bg-white p-4 rounded-lg shadow">
                       <h4 className="text-lg font-medium mb-2">correct vs. incorrect</h4>
-                      <div style={{ width: '100%', height: 300 }}>
+                      <div style={{ width: '100%', height: 350 }}>
                         <ChartContainer config={{}} className="aspect-[4/3] h-full">
                           <BarChart
                             data={statistics.sectionPerformance}
                             layout="vertical"
                           >
                             <XAxis type="number" domain={[0, 100]} />
-                            <YAxis dataKey="name" type="category" width={100} />
+                            <YAxis dataKey="name" type="category" width={120} />
                             <Tooltip content={<ChartTooltipContent />} />
                             <Legend />
                             <Bar dataKey="percentage" name="Correct %" fill="#0A3161" />
