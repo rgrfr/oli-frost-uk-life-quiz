@@ -7,6 +7,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, Cell, PieChart, Pie } from 'recharts';
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import FeedbackDisplay from './FeedbackDisplay';
 
 type QuizStatistics = {
   totalAttempts: number;
@@ -267,6 +268,14 @@ const StatisticsPage: React.FC = () => {
             </Button>
           </CardFooter>
         </Card>
+      </div>
+      
+      {/* Add this right before the final closing div of the content section */}
+      <div className="mt-8 px-4 max-w-3xl mx-auto">
+        <div className="border-t pt-8">
+          <h2 className="text-2xl font-bold mb-4">User Feedback</h2>
+          <FeedbackDisplay />
+        </div>
       </div>
     </div>
   );

@@ -24,6 +24,47 @@ export type Database = {
         }
         Relationships: []
       }
+      feedback: {
+        Row: {
+          attempt_id: string | null
+          content: string
+          created_at: string
+          id: string
+          is_approved: boolean | null
+          question_id: number | null
+          rating: number
+          user_name: string | null
+        }
+        Insert: {
+          attempt_id?: string | null
+          content: string
+          created_at?: string
+          id?: string
+          is_approved?: boolean | null
+          question_id?: number | null
+          rating: number
+          user_name?: string | null
+        }
+        Update: {
+          attempt_id?: string | null
+          content?: string
+          created_at?: string
+          id?: string
+          is_approved?: boolean | null
+          question_id?: number | null
+          rating?: number
+          user_name?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "feedback_attempt_id_fkey"
+            columns: ["attempt_id"]
+            isOneToOne: false
+            referencedRelation: "quiz_attempts"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       question_results: {
         Row: {
           attempt_id: string

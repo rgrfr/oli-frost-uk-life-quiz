@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useQuiz } from '@/context/QuizContext';
@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 import CreditsDialog from './CreditsDialog';
+import FeedbackForm from './FeedbackForm';
 
 interface ResultsScreenProps {
   onRestartQuiz: () => void;
@@ -16,6 +17,8 @@ interface ResultsScreenProps {
 const ResultsScreen: React.FC<ResultsScreenProps> = ({ onRestartQuiz }) => {
   const { score, totalAttempted, resetQuiz, getScorePercentage, selectedAnswers, checkedQuestions } = useQuiz();
   const { toast } = useToast();
+  const [quizAttemptId, setQuizAttemptId] = useState<string | undefined>(undefined);
+  const [showFeedback, setShowFeedback] = useState(false);
   
   const scorePercentage = getScorePercentage();
   
@@ -62,6 +65,9 @@ const ResultsScreen: React.FC<ResultsScreenProps> = ({ onRestartQuiz }) => {
         });
         return;
       }
+      
+      // Store the attempt ID for feedback submission
+      setQuizAttemptId(attemptData.id);
       
       // Save individual question results
       const questionResults = checkedQuestions.map(questionId => {
@@ -137,6 +143,25 @@ const ResultsScreen: React.FC<ResultsScreenProps> = ({ onRestartQuiz }) => {
               </ul>
             </div>
           </div>
+
+          {showFeedback ? (
+            <div className="mt-6 border-t pt-4">
+              <h3 className="text-lg font-medium mb-4">
+                Share Your Thoughts
+              </h3>
+              <FeedbackForm attemptId={quizAttemptId} />
+            </div>
+          ) : (
+            <div className="mt-6 text-center">
+              <Button 
+                onClick={() => setShowFeedback(true)}
+                variant="outline"
+                className="w-full"
+              >
+                Give Feedback
+              </Button>
+            </div>
+          )}
         </CardContent>
         
         <CardFooter className="flex flex-col justify-center gap-3 pb-6 pt-2">
