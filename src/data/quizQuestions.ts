@@ -211,7 +211,7 @@ export const questions: Question[] = [
       { text: "Fried Bread", isCorrect: false },
       { text: "Black Pudding", isCorrect: false },
       { text: "Grilled tomato", isCorrect: false },
-      { text: "Pancakes", isCorrect: true },
+      { text: "Boiled egg with soldiers", isCorrect: true },
       { text: "Beans", isCorrect: false }
     ],
     explanation: "While black pudding is often included in a full English breakfast in some regions, it's technically correct to say it's not always found in every English breakfast!",
