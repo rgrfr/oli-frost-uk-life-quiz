@@ -33,9 +33,9 @@ const CreditsDialog: React.FC<CreditsDialogProps> = ({
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle>about this quiz</DialogTitle>
+          <DialogTitle>about this quiz - credits</DialogTitle>
           <DialogDescription>
-            Credits and information
+            ---
           </DialogDescription>
         </DialogHeader>
         <div className="space-y-4 py-2">
