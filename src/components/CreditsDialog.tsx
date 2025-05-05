@@ -41,7 +41,7 @@ const CreditsDialog: React.FC<CreditsDialogProps> = ({
         <div className="space-y-4 py-2">
           <p>
             The Life in the UK quiz was made for the helluvit and then we felt it deserved a bigger audience. 
-            It was inspired as a way to test the street-credibility of Ella, a visiting US guest, after 
+            It was made to test the street-credibility of Ella, a visiting US guest, after 
             studying in the UK for several months.
           </p>
           <p>
