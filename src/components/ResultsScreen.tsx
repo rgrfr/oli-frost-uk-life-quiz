@@ -7,6 +7,7 @@ import { questions } from '@/data/quizQuestions';
 import { Link } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
+import CreditsDialog from './CreditsDialog';
 
 interface ResultsScreenProps {
   onRestartQuiz: () => void;
@@ -94,11 +95,14 @@ const ResultsScreen: React.FC<ResultsScreenProps> = ({ onRestartQuiz }) => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-ukgrey">
       <Card className="w-full max-w-md border-2 border-ukblue shadow-lg">
-        <CardHeader className="bg-ukblue text-white text-center">
+        <CardHeader className="bg-ukblue text-white text-center relative">
           <CardTitle className="text-2xl font-bold">your results</CardTitle>
           <CardDescription className="text-gray-200">
             Life in the UK
           </CardDescription>
+          <div className="absolute top-4 right-4">
+            <CreditsDialog triggerText="credits/about" size="sm" variant="ghost" className="text-gray-200 hover:text-white text-xs" />
+          </div>
         </CardHeader>
         
         <CardContent className="pt-6">
