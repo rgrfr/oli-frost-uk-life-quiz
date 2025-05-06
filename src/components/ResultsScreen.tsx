@@ -31,7 +31,7 @@ const ResultsScreen: React.FC<ResultsScreenProps> = ({ onRestartQuiz }) => {
     if (scorePercentage >= 90) {
       return "Outstanding! You're practically British!";
     } else if (scorePercentage >= 75) {
-      return "Great job! You know your British culture well!";
+      return "Great job! You know British culture well!";
     } else if (scorePercentage >= 60) {
       return "Good effort! You know quite a bit about life in the UK.";
     } else if (scorePercentage >= 40) {

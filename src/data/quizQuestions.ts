@@ -144,6 +144,7 @@ export const questions: Question[] = [
     answers: [
       { text: "Elevenses", isCorrect: true },
       { text: "Tea", isCorrect: false },
+      { text: "High tea", isCorrect: false },
       { text: "Supper", isCorrect: false },
       { text: "Dinner", isCorrect: false }
     ],
@@ -153,7 +154,7 @@ export const questions: Question[] = [
   },
   {
     id: 11,
-    text: "Which of these is NOT considered one of England's specialities?",
+    text: "Which of these is NOT considered one of the UK's specialities?",
     answers: [
       { text: "Chips and gravy", isCorrect: false },
       { text: "Pie and a pint", isCorrect: false },
@@ -593,8 +594,8 @@ export const questions: Question[] = [
     answers: [
       { text: "20p", isCorrect: false },
       { text: "25p", isCorrect: true },
-      { text: "5p", isCorrect: false },
-      { text: "50p", isCorrect: false }
+      { text: "50p", isCorrect: false },
+      { text: "5p", isCorrect: false }
     ],
     explanation: "The UK has 1p, 2p, 5p, 10p, 20p, 50p, £1 and £2 coins, but no 25p coin in general circulation!",
     multipleCorrect: false,

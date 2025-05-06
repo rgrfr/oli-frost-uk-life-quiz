@@ -40,13 +40,12 @@ const CreditsDialog: React.FC<CreditsDialogProps> = ({
         </DialogHeader>
         <div className="space-y-4 py-2">
           <p>
-            The Life in the UK quiz was made for the helluvit and then we felt it deserved a bigger audience. 
-            It was made to test the street-credibility of Ella, a visiting US guest, after 
-            studying in the UK for several months.
+            The Life in the UK quiz was made to test the street-credibility of Ella, a visiting US guest, after 
+            studying in the UK for several months. But then we thought to give it a wider audience.
           </p>
           <p>
-            Oli wrote it although he'd sooner be lobbying those able to avert a climate crisis - see his 
-            work and songs at <a 
+            Oli F wrote it although he'd sooner be lobbying those able to avert a climate crisis - see his 
+            work and award-winning songs at <a 
               href="https://olifro.st" 
               target="_blank" 
               rel="noopener noreferrer"
@@ -56,7 +55,7 @@ const CreditsDialog: React.FC<CreditsDialogProps> = ({
             </a>.
           </p>
           <p>
-            His dad, Roger Frost designed the web app - and otherwise he blogs about home automation at <a 
+            His dad, Roger F 'vibe-coded' the web app - otherwise he blogs about home automation at <a 
               href="https://rogerfrost.com" 
               target="_blank" 
               rel="noopener noreferrer"
