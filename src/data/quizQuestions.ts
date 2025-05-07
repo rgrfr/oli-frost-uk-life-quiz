@@ -207,7 +207,7 @@ export const questions: Question[] = [
   },
   {
     id: 15,
-    text: "Which of these are you LEAST likely to find in a Full English breakfast?",
+    text: "Which of these are you LEAST likely to find in a full English breakfast?",
     answers: [
       { text: "Fried Bread", isCorrect: false },
       { text: "Black Pudding", isCorrect: false },
@@ -215,7 +215,7 @@ export const questions: Question[] = [
       { text: "Boiled egg with soldiers", isCorrect: true },
       { text: "Beans", isCorrect: false }
     ],
-    explanation: "While black pudding is often included in a full English breakfast in some regions, it's technically correct to say it's not always found in every English breakfast!",
+    explanation: "While black pudding is included in a full English breakfast in some regions, it's not always found in a full English! Yes, eggie-wegs and soldiers would be a separate order. ",
     multipleCorrect: false,
     section: "food & drink"
   },
