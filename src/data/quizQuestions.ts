@@ -64,7 +64,7 @@ export const questions: Question[] = [
   },
   {
     id: 4,
-    text: "What is a half?",
+    text: "What is a 'Half'?",
     answers: [
       { text: "A pointless amount of beer", isCorrect: true },
       { text: "A half dozen, as in six eggs", isCorrect: false },
@@ -95,7 +95,7 @@ export const questions: Question[] = [
     answers: [
       { text: "Exceedingly good cakes", isCorrect: true },
       { text: "Wonderful fried fish", isCorrect: false },
-      { text: "Exceptional Yorkshire Pudding", isCorrect: false },
+      { text: "Exceptional Yorkshire pudding", isCorrect: false },
       { text: "The very best Kippers", isCorrect: false }
     ],
     explanation: "Mr Kipling's slogan is 'exceedingly good cakes' - they're a famous cake brand in the UK!",
@@ -254,8 +254,8 @@ export const questions: Question[] = [
     answers: [
       { text: "It's a toad in a hole", isCorrect: false },
       { text: "It's potatoes in gravy", isCorrect: false },
-      { text: "It's a pig in pancake mix", isCorrect: true },
-      { text: "It's another name for pigs in a blanket", isCorrect: false }
+      { text: "It's pig in pancake mix", isCorrect: true },
+      { text: "It's pig in a blanket of bacon", isCorrect: false }
     ],
     explanation: "Toad in the hole is sausages (the 'pig') baked in Yorkshire pudding batter (the 'pancake mix')!",
     multipleCorrect: false,
@@ -401,7 +401,7 @@ export const questions: Question[] = [
   },
   {
     id: 29,
-    text: "When is BIN DAY?",
+    text: "When is the much anticipated BIN DAY?",
     answers: [
       { text: "The day after Christmas", isCorrect: false },
       { text: "4th July", isCorrect: false },
@@ -446,10 +446,11 @@ export const questions: Question[] = [
     text: "What is generally considered the most socially unacceptable behaviour in a queue in the UK?",
     answers: [
       { text: "Asking how long the queue is", isCorrect: false },
-      { text: "Having a conversation with a person nearer the front", isCorrect: false },
-      { text: "Moving in before a person nearer the front", isCorrect: true }
+      { text: "Having a conversation with a person further up the queue", isCorrect: false },
+      { text: "Making eye contact with someone further up the queue", isCorrect: false },
+      { text: "Moving in before a person further up the queue", isCorrect: true }
     ],
-    explanation: "Queueing is a serious business in the UK, and pushing in is considered a significant breach of social norms",
+    explanation: "Queueing is a serious business in the UK, and pushing in is a declaration of war on British politeness",
     multipleCorrect: false,
     section: "language & social"
   },
