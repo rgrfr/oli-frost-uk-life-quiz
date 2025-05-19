@@ -35,12 +35,12 @@ const CreditsDialog: React.FC<CreditsDialogProps> = ({
         <DialogHeader>
           <DialogTitle>about this quiz - credits</DialogTitle>
           <DialogDescription>
-            ---
+          
           </DialogDescription>
         </DialogHeader>
         <div className="space-y-4 py-2">
           <p>
-            The Life in the UK quiz was made to test the street-credibility of Ella, a visiting US guest, after 
+            This quiz was made to test the street-credibility of Ella, a visiting US guest, after 
             studying in the UK for several months. But then we thought to give it a wider audience.
           </p>
           <p>
@@ -55,7 +55,7 @@ const CreditsDialog: React.FC<CreditsDialogProps> = ({
             </a>.
           </p>
           <p>
-            His dad, Roger F 'coded' the web app in lovable.dev - otherwise he blogs about home automation and sensors  
+            His dad, Roger F 'coded' the app in lovable.dev - otherwise he blogs about home automation and sensors  
             {/* <a 
               href="https://rogerfrost.com" 
               target="_blank" 

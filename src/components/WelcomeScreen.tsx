@@ -24,7 +24,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStartQuiz }) => {
         <CardHeader className="bg-ukblue text-white text-center relative">
           <CardTitle className="text-2xl font-bold">Life in the UK Quiz</CardTitle>
           <CardDescription className="text-gray-200">
-            Questions about life in the United Kingdom
+            Questions about British culture, customs, and daily life
           </CardDescription>
           <div className="absolute top-4 right-4">
             <CreditsDialog triggerText=" [about]" size="sm" variant="ghost" className="text-gray-200 hover:text-white text-xs" />
@@ -33,7 +33,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStartQuiz }) => {
         
         <CardContent className="pt-6 pb-4">
           <div className="space-y-4">
-            <p>These questions will test your knowledge about British culture, customs, and daily life. This has yet to become the British citizenship exam, under British law, as might be decreed by his majesty the King.</p>
+            <p>This has yet to become the actual British citizenship exam, under British law, as might be decreed by his majesty the King.</p>
             
             <p>There are <span className="font-semibold">{questions.length}</span> questions - about 5-10 minutes:</p>
             
