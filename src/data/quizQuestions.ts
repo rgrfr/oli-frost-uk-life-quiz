@@ -199,9 +199,9 @@ export const questions: Question[] = [
       { text: "Carrots", isCorrect: false },
       { text: "Roast potatoes", isCorrect: false },
       { text: "Parsnips", isCorrect: false },
-      { text: "Rice pudding", isCorrect: true }
+      { text: "Jellied eels", isCorrect: true }
     ],
-    explanation: "Rice pudding is a dessert, not part of a Sunday roast dinner!",
+    explanation: "Jellied eels is not part of a Sunday roast dinner!",
     multipleCorrect: false,
     section: "food & drink"
   },
@@ -210,12 +210,13 @@ export const questions: Question[] = [
     text: "Which of these are you LEAST likely to find in a full English breakfast?",
     answers: [
       { text: "Fried Bread", isCorrect: false },
-      { text: "Black Pudding", isCorrect: false },
+      { text: "Egg", isCorrect: false },
+      { text: "Bangers", isCorrect: false },
       { text: "Grilled tomato", isCorrect: false },
       { text: "Boiled egg with soldiers", isCorrect: true },
       { text: "Beans", isCorrect: false }
     ],
-    explanation: "While black pudding is included in a full English breakfast in some regions, it's not always found in a full English! Yes, eggie-wegs and soldiers would be a separate order. ",
+    explanation: "Yes, eggie-wegs and soldiers would be a separate order. ",
     multipleCorrect: false,
     section: "food & drink"
   },
@@ -348,7 +349,7 @@ export const questions: Question[] = [
     id: 25,
     text: "Who are Bill and Ben?",
     answers: [
-      { text: "Lanky lads", isCorrect: false },
+      { text: "The boys from the blackstuff", isCorrect: false },
       { text: "Flowerpot men", isCorrect: true },
       { text: "Builder boys", isCorrect: false }
     ],
@@ -360,9 +361,9 @@ export const questions: Question[] = [
     id: 26,
     text: "What special award was given to amazing people on the show Blue Peter?",
     answers: [
-      { text: "Free lifetime entry to any of the national trust sites", isCorrect: false },
-      { text: "A signed photograph of Konnie Huq", isCorrect: false },
-      { text: "A nautical themed badge", isCorrect: true }
+      { text: "Lifetime entry to most National Trust sites", isCorrect: false },
+      { text: "A signed photograph of presenter Konnie Huq", isCorrect: false },
+      { text: "A badge", isCorrect: true }
     ],
     explanation: "Blue Peter badges are coveted awards given on the long-running children's TV show!",
     multipleCorrect: false,
@@ -441,13 +442,13 @@ export const questions: Question[] = [
   // Language & Social
   {
     id: 32,
-    text: "When describing something as laddy, what is the correct number of lads?",
+    text: "What is generally considered the most socially unacceptable behaviour in a queue in the UK?",
     answers: [
-      { text: "Lads", isCorrect: false },
-      { text: "Lads lads", isCorrect: false },
-      { text: "Lads lads lads", isCorrect: true }
+      { text: "Asking how long the queue is", isCorrect: false },
+      { text: "Having a conversation with a person nearer the front", isCorrect: false },
+      { text: "Pushing in front of others", isCorrect: true }
     ],
-    explanation: "The phrase 'lads lads lads' is often used to describe particularly 'laddy' behavior!",
+    explanation: "Queueing is a serious business in the UK, and pushing in is considered a significant breach of social norms",
     multipleCorrect: false,
     section: "language & social"
   },
@@ -503,7 +504,7 @@ export const questions: Question[] = [
   },
   {
     id: 37,
-    text: "Which of these classes does NOT (arguably) like horses?",
+    text: "Which of these classes does NOT (stereotypically) like horses?",
     answers: [
       { text: "Working class", isCorrect: false },
       { text: "Middle class", isCorrect: true },
@@ -521,10 +522,10 @@ export const questions: Question[] = [
       { text: "Babes", isCorrect: false },
       { text: "Missus", isCorrect: false },
       { text: "Hun", isCorrect: false },
-      { text: "Bessie mate", isCorrect: true },
+      { text: "My bread pudding", isCorrect: true },
       { text: "The Old Ball and Chain", isCorrect: false }
     ],
-    explanation: "'Bessie mate' is probable but it isn't a common term for a wife in Britain!",
+    explanation: "'My bread pudding isn't a common term for a wife in Britain!",
     multipleCorrect: false,
     section: "language & social"
   },
@@ -538,7 +539,6 @@ export const questions: Question[] = [
       { text: "Lord", isCorrect: false },
       { text: "Cor Blimey", isCorrect: false },
       { text: "Bloody hell", isCorrect: false },
-      { text: "F**k me", isCorrect: false },
       { text: "Golly", isCorrect: false },
       { text: "Heavens", isCorrect: false },
       { text: "Crikey", isCorrect: false },
