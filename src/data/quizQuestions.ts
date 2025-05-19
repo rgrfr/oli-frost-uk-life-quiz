@@ -376,7 +376,7 @@ export const questions: Question[] = [
     answers: [
       { text: "Don't Blink Twice", isCorrect: false },
       { text: "Colossus", isCorrect: true },
-      { text: "Nemesis", isCorrect: true },
+      { text: "Nemesis Inferno", isCorrect: true },
       { text: "Hammer Time", isCorrect: false },
       { text: "Wet N Wild", isCorrect: false },
       { text: "The Pincher", isCorrect: false }
