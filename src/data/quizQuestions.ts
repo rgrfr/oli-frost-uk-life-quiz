@@ -401,7 +401,7 @@ export const questions: Question[] = [
   },
   {
     id: 29,
-    text: "When is bin day?",
+    text: "When is BIN DAY?",
     answers: [
       { text: "The day after Christmas", isCorrect: false },
       { text: "4th July", isCorrect: false },
