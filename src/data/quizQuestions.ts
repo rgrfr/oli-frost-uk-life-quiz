@@ -521,11 +521,11 @@ export const questions: Question[] = [
       { text: "Love", isCorrect: false },
       { text: "Babes", isCorrect: false },
       { text: "Missus", isCorrect: false },
-      { text: "Hun", isCorrect: false },
-      { text: "My bread pudding", isCorrect: true },
+      { text: "The boss", isCorrect: false },
+      { text: "Me Bread Pudding", isCorrect: true },
       { text: "The Old Ball and Chain", isCorrect: false }
     ],
-    explanation: "'My bread pudding isn't a common term for a wife in Britain!",
+    explanation: "'Me bread pudding isn't a common term for a wife in Britain!",
     multipleCorrect: false,
     section: "language & social"
   },
