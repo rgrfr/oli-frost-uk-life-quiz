@@ -447,7 +447,7 @@ export const questions: Question[] = [
     answers: [
       { text: "Asking how long the queue is", isCorrect: false },
       { text: "Having a conversation with a person nearer the front", isCorrect: false },
-      { text: "Pushing in front of others", isCorrect: true }
+      { text: "Moving in before a person nearer the front", isCorrect: true }
     ],
     explanation: "Queueing is a serious business in the UK, and pushing in is considered a significant breach of social norms",
     multipleCorrect: false,
