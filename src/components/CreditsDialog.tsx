@@ -55,14 +55,15 @@ const CreditsDialog: React.FC<CreditsDialogProps> = ({
             </a>.
           </p>
           <p>
-            His dad, Roger F 'vibe-coded' the web app - otherwise he blogs about home automation at <a 
+            His dad, Roger F 'coded' the web app in lovable.dev - otherwise he blogs about home automation and sensors  
+            {/* <a 
               href="https://rogerfrost.com" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline inline-flex items-center"
-            >
-              rogerfrost.com <ExternalLink className="ml-1 h-3 w-3" />
-            </a>
+            > */}
+              {/* rogerfrost.com <ExternalLink className="ml-1 h-3 w-3" />
+            </a> */}
           </p>
         </div>
       </DialogContent>
