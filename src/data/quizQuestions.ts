@@ -351,8 +351,9 @@ export const questions: Question[] = [
     text: "Who are Bill and Ben?",
     answers: [
       { text: "The boys from the blackstuff", isCorrect: false },
+      { text: "A grime duo from East London", isCorrect: false },
       { text: "Flowerpot men", isCorrect: true },
-      { text: "Builder boys", isCorrect: false }
+      { text: "Two contestants who were kicked off 'Love Island'", isCorrect: false }
     ],
     explanation: "Bill and Ben are the Flowerpot Men, characters from a classic British children's TV show!",
     multipleCorrect: false,
