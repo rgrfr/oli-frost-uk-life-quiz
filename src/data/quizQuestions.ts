@@ -69,7 +69,7 @@ export const questions: Question[] = [
       { text: "A pointless amount of beer", isCorrect: true },
       { text: "A half dozen, as in six eggs", isCorrect: false },
       { text: "Half a line of cocaine", isCorrect: false },
-      { text: "A 300ml bottle of wine", isCorrect: false }
+      { text: "A 350ml bottle of wine", isCorrect: false }
     ],
     explanation: "A 'half' refers to half a pint of beer, which some consider a rather modest serving!",
     multipleCorrect: false,
@@ -81,11 +81,11 @@ export const questions: Question[] = [
     answers: [
       { text: "Bread roll", isCorrect: false },
       { text: "Egg roll", isCorrect: false },
-      { text: "Bran Roll", isCorrect: true },
+      { text: "Rolls Royce", isCorrect: true },
       { text: "Swiss roll", isCorrect: false },
       { text: "Sausage roll", isCorrect: false }
     ],
-    explanation: "While Bran Flakes are a thing, 'Bran Roll' isn't a recognized type of roll in the UK!",
+    explanation: "Car salesman Charles Rolls and engineer Henry Royce created the Rolls-Royce which is a car, not a roll",
     multipleCorrect: false,
     section: "food & drink"
   },
@@ -160,6 +160,7 @@ export const questions: Question[] = [
       { text: "Chips and gravy", isCorrect: false },
       { text: "Pie and a pint", isCorrect: false },
       { text: "Deconstructed shepherd's pie", isCorrect: true },
+      { text: "Gala pie", isCorrect: false },     
       { text: "Fried Mars bars", isCorrect: false }
     ],
     explanation: "Deconstructed shepherd's pie is a fancy modern invention, not a traditional English specialty!",
@@ -255,7 +256,7 @@ export const questions: Question[] = [
       { text: "It's a toad in a hole", isCorrect: false },
       { text: "It's potatoes in gravy", isCorrect: false },
       { text: "It's pig in pancake mix", isCorrect: true },
-      { text: "It's pig in a blanket of bacon", isCorrect: false }
+      { text: "It's pig in a blanket of sliced pig", isCorrect: false }
     ],
     explanation: "Toad in the hole is sausages (the 'pig') baked in Yorkshire pudding batter (the 'pancake mix')!",
     multipleCorrect: false,
@@ -290,7 +291,7 @@ export const questions: Question[] = [
   },
   {
     id: 21,
-    text: "Which is NOT a chocolate bar?",
+    text: "Which is NOT a chocolate bar? Select multiple answers",
     answers: [
       { text: "Lion", isCorrect: false },
       { text: "Chumbawumba", isCorrect: true },
@@ -336,7 +337,7 @@ export const questions: Question[] = [
   },
   {
     id: 24,
-    text: "Which of these songs would be least appropriate as the last song at a disco?",
+    text: "Which of these songs would be least appropriate as the last song at a wedding disco?",
     answers: [
       { text: "Mr Brightside by The Killers", isCorrect: false },
       { text: "Nothing Compares 2 U by Sinead O'Connor", isCorrect: true },
@@ -511,9 +512,10 @@ export const questions: Question[] = [
     answers: [
       { text: "Working class", isCorrect: false },
       { text: "Middle class", isCorrect: true },
-      { text: "Upper class", isCorrect: false }
+      { text: "Upper class", isCorrect: false },
+      { text: "The landed gentry", isCorrect: true }
     ],
-    explanation: "While working class may enjoy horse racing and upper class enjoy fox hunting, middle class stereotypically don't have the same association with horses!",
+    explanation: "While working class may enjoy horse racing and the upper class and landed gentry enjoy fox hunting, middle class stereotypically don't have the same association with horses!",
     multipleCorrect: false,
     section: "language & social"
   },
