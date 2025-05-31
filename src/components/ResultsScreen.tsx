@@ -158,7 +158,7 @@ const ResultsScreen: React.FC<ResultsScreenProps> = ({ onRestartQuiz }) => {
                 variant="outline"
                 className="w-full"
               >
-                Give Feedback
+                offer a new question or give feedback
               </Button>
             </div>
           )}
@@ -169,7 +169,7 @@ const ResultsScreen: React.FC<ResultsScreenProps> = ({ onRestartQuiz }) => {
             onClick={handleRestartQuiz}
             className="bg-ukred hover:bg-red-700 text-white w-full max-w-xs"
           >
-            Restart Quiz
+            clear result & restart quiz
           </Button>
           
           <Link to="/statistics" className="w-full max-w-xs">
