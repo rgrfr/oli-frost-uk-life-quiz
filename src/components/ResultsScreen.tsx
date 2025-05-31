@@ -107,7 +107,7 @@ const ResultsScreen: React.FC<ResultsScreenProps> = ({ onRestartQuiz }) => {
             Life in the UK
           </CardDescription>
           <div className="absolute top-4 right-4">
-            <CreditsDialog triggerText="credits/about" size="sm" variant="ghost" className="text-gray-200 hover:text-white text-xs" />
+            <CreditsDialog triggerText="credits/about" size="sm" variant="ghost" className="text-gray-200 hover:text-gray-800 text-xs" />
           </div>
         </CardHeader>
         

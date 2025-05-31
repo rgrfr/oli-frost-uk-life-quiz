@@ -27,7 +27,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStartQuiz }) => {
             Questions about British culture, customs, and daily life
           </CardDescription>
           <div className="absolute top-4 right-4">
-            <CreditsDialog triggerText=" [about]" size="sm" variant="ghost" className="text-gray-200 hover:text-white text-xs" />
+            <CreditsDialog triggerText=" [about]" size="sm" variant="ghost" className="text-gray-200 hover:text-gray-800 text-xs" />
           </div>
         </CardHeader>
         
