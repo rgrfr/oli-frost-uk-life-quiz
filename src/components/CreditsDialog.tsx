@@ -9,7 +9,8 @@ import {
   DialogTrigger 
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, BarChart3 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface CreditsDialogProps {
   triggerText: string;
@@ -39,6 +40,21 @@ const CreditsDialog: React.FC<CreditsDialogProps> = ({
           </DialogDescription>
         </DialogHeader>
         <div className="space-y-4 py-2">
+          <div className="flex justify-center mb-4">
+            <Link to="/statistics" className="group">
+              <img 
+                src="/og-image.png" 
+                alt="UK Life Quiz" 
+                className="rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 cursor-pointer group-hover:opacity-90 max-w-full h-auto"
+                style={{ maxHeight: '200px' }}
+              />
+              <div className="text-center mt-2 text-sm text-blue-600 group-hover:underline flex items-center justify-center">
+                <BarChart3 className="w-4 h-4 mr-1" />
+                View Quiz Statistics
+              </div>
+            </Link>
+          </div>
+          
           <p>
             This quiz was made to test the street-credibility of Ella, a visiting US guest, after 
             studying in the UK for several months. But then we thought to give it a wider audience.

@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -5,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
-import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, Cell, PieChart, Pie } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import FeedbackDisplay from './FeedbackDisplay';
 
@@ -76,17 +77,23 @@ const StatisticsPage: React.FC = () => {
           questionsAnalytics[questionId].percentage = total > 0 ? (correct / total) * 100 : 0;
         });
         
-        // Calculate section performance
+        // Calculate section performance - normalize section names
         const sectionData: Record<string, { correct: number; incorrect: number }> = {};
         questionResults.forEach(result => {
-          if (!sectionData[result.section]) {
-            sectionData[result.section] = { correct: 0, incorrect: 0 };
+          // Normalize the section name to handle old "entertainment & culture" references
+          let normalizedSection = result.section;
+          if (normalizedSection.toLowerCase() === 'entertainment & culture') {
+            normalizedSection = 'culture & customs';
+          }
+          
+          if (!sectionData[normalizedSection]) {
+            sectionData[normalizedSection] = { correct: 0, incorrect: 0 };
           }
           
           if (result.is_correct) {
-            sectionData[result.section].correct += 1;
+            sectionData[normalizedSection].correct += 1;
           } else {
-            sectionData[result.section].incorrect += 1;
+            sectionData[normalizedSection].incorrect += 1;
           }
         });
         
@@ -118,12 +125,6 @@ const StatisticsPage: React.FC = () => {
   }, []);
 
   const COLORS = ['#0A3161', '#CF142B', '#4CAF50', '#FF9800', '#9C27B0', '#607D8B'];
-
-  const pieData = statistics.sectionPerformance.map((section, index) => ({
-    name: section.name,
-    value: section.percentage,
-    fill: COLORS[index % COLORS.length]
-  }));
 
   const handleBackToResults = () => {
     // Navigate specifically to results page with state indicating we want to show results
@@ -187,38 +188,6 @@ const StatisticsPage: React.FC = () => {
                 <div>
                   <h3 className="text-xl font-bold mb-2">section performance</h3>
                   <div className="grid grid-cols-1 gap-6">
-                    <div className="bg-white p-4 rounded-lg shadow">
-                      <h4 className="text-lg font-medium mb-2">by category</h4>
-                      {/* MODIFICATIONS START HERE */}
-                      <div className="flex justify-center"> {/* Added flex and justify-center for explicit centering */}
-                        <div 
-                          className="w-full max-w-lg md:max-w-xl lg:max-w-2xl" // Adjusted width and max-width for more space
-                          style={{ height: 350 }} // Keep height as is
-                        >
-                          <ChartContainer config={{}} className="aspect-square h-full">
-                            <PieChart>
-                              <Pie
-                                data={pieData}
-                                nameKey="name"
-                                dataKey="value"
-                                cx="50%"
-                                cy="50%"
-                                outerRadius={120}
-                                label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
-                              >
-                                {pieData.map((entry, index) => (
-                                  <Cell key={`cell-${index}`} fill={entry.fill} />
-                                ))}
-                              </Pie>
-                              <Tooltip content={<ChartTooltipContent />} />
-                              <Legend />
-                            </PieChart>
-                          </ChartContainer>
-                        </div>
-                      </div>
-                      {/* MODIFICATIONS END HERE */}
-                    </div>
-                    
                     <div className="bg-white p-4 rounded-lg shadow">
                       <h4 className="text-lg font-medium mb-2">correct vs. incorrect</h4>
                       <div style={{ width: '100%', height: 350 }}>
