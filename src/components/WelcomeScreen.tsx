@@ -39,7 +39,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStartQuiz }) => {
             
             <ul className="list-disc pl-5 space-y-1">
               <li>Food & Drink</li>
-              <li>Entertainment & Culture</li>
+              <li>culture & customs</li>
               <li>Geography & Places</li>
               <li>Language & Social Norms</li>
               <li>Shops & Commerce</li>

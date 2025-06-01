@@ -15,7 +15,7 @@ export interface Question {
 
 export const quizSections = [
   "food & drink",
-  "entertainment & culture",
+  "culture & customs",
   "geography & places", 
   "language & social",
   "shops & commerce",
@@ -322,7 +322,7 @@ export const questions: Question[] = [
     multipleCorrect: false,
     section: "food & drink"
   },
-  // Entertainment & Culture
+  // culture & customs
   {
     id: 23,
     text: "Which of the three holes in a plug socket does NOT carry dangerous electricity?",
@@ -333,7 +333,7 @@ export const questions: Question[] = [
     ],
     explanation: "The top hole is the earth pin and doesn't carry current under normal circumstances!",
     multipleCorrect: false,
-    section: "entertainment & culture"
+    section: "culture & customs"
   },
   {
     id: 24,
@@ -345,7 +345,7 @@ export const questions: Question[] = [
     ],
     explanation: "Nothing Compares 2 U is a sad breakup song - not ideal for ending a fun disco night!",
     multipleCorrect: false,
-    section: "entertainment & culture"
+    section: "culture & customs"
   },
   {
     id: 25,
@@ -358,7 +358,7 @@ export const questions: Question[] = [
     ],
     explanation: "Bill and Ben are the Flowerpot Men, characters from a classic British children's TV show!",
     multipleCorrect: false,
-    section: "entertainment & culture"
+    section: "culture & customs"
   },
   {
     id: 26,
@@ -370,7 +370,7 @@ export const questions: Question[] = [
     ],
     explanation: "Blue Peter badges are coveted awards given on the long-running children's TV show!",
     multipleCorrect: false,
-    section: "entertainment & culture"
+    section: "culture & customs"
   },
   {
     id: 27,
@@ -385,7 +385,7 @@ export const questions: Question[] = [
     ],
     explanation: "Colossus and Nemesis are both famous roller coasters at Thorpe Park!",
     multipleCorrect: true,
-    section: "entertainment & culture"
+    section: "culture & customs"
   },
   // Geography & Places
   {
