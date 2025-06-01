@@ -50,14 +50,14 @@ const CreditsDialog: React.FC<CreditsDialogProps> = ({
               />
               <div className="text-center mt-2 text-sm text-blue-600 group-hover:underline flex items-center justify-center">
                 <BarChart3 className="w-4 h-4 mr-1" />
-                View Quiz Statistics
+                view quiz results to date
               </div>
             </Link>
           </div>
           
           <p>
             This quiz was made to test the street-credibility of Ella, a frequent visitor from the USA, after 
-            studying in the UK for several months. But then, without any agenda we thought to give it a wider audience.
+            studying in the UK for several months in 2025. But then, without any agenda we thought to give it a wider audience.
           </p>
           <p>
             Oli F wrote it although he'd sooner be imploring those able to avert a climate crisis to get on with it - see his 
@@ -71,7 +71,7 @@ const CreditsDialog: React.FC<CreditsDialogProps> = ({
             </a>.
           </p>
           <p>
-            His dad, Roger F made the app in lovable.dev - otherwise he dabbles in the technology of home automation and sensors  
+            His dad, Roger F made the app in lovable.dev - otherwise he dabbles in home automation and sensors  
             {/* <a 
               href="https://rogerfrost.com" 
               target="_blank" 
