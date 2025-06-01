@@ -111,6 +111,7 @@ const ResultsScreen: React.FC<ResultsScreenProps> = ({ onRestartQuiz }) => {
           </div>
         </CardHeader>
         
+
         <CardContent className="pt-6">
           <div className="text-center space-y-4">
             <div className="text-4xl font-bold">
@@ -144,27 +145,19 @@ const ResultsScreen: React.FC<ResultsScreenProps> = ({ onRestartQuiz }) => {
             </div>
           </div>
 
-          {showFeedback ? (
+          {/* This section now ONLY contains the FeedbackForm */}
+          {showFeedback && (
             <div className="mt-6 border-t pt-4">
               <h3 className="text-lg font-medium mb-4">
                 Share Your Thoughts
               </h3>
               <FeedbackForm attemptId={quizAttemptId} />
             </div>
-          ) : (
-            <div className="mt-6 text-center">
-              <Button 
-                onClick={() => setShowFeedback(true)}
-                variant="outline"
-                className="w-full"
-              >
-                offer a new question or give feedback
-              </Button>
-            </div>
           )}
         </CardContent>
-        
+ 
         <CardFooter className="flex flex-col justify-center gap-3 pb-6 pt-2">
+          {/* Red button (clear result & restart quiz) */}
           <Button 
             onClick={handleRestartQuiz}
             className="bg-ukred hover:bg-red-700 text-white w-full max-w-xs"
@@ -172,6 +165,18 @@ const ResultsScreen: React.FC<ResultsScreenProps> = ({ onRestartQuiz }) => {
             clear result & restart quiz
           </Button>
           
+          {/* Moved white button here, now between red and blue */}
+          {!showFeedback && (
+            <Button 
+              onClick={() => setShowFeedback(true)}
+              variant="outline"
+              className="w-full max-w-xs border-gray-400 text-gray-800 hover:bg-gray-100" 
+            >
+              offer a new question or give feedback
+            </Button>
+          )}
+
+          {/* Blue button (view population statistics) */}
           <Link to="/statistics" className="w-full max-w-xs">
             <Button 
               className="bg-ukblue hover:bg-blue-800 text-white w-full"
@@ -180,6 +185,7 @@ const ResultsScreen: React.FC<ResultsScreenProps> = ({ onRestartQuiz }) => {
             </Button>
           </Link>
         </CardFooter>
+
       </Card>
     </div>
   );
