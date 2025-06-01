@@ -189,27 +189,34 @@ const StatisticsPage: React.FC = () => {
                   <div className="grid grid-cols-1 gap-6">
                     <div className="bg-white p-4 rounded-lg shadow">
                       <h4 className="text-lg font-medium mb-2">by category</h4>
-                      <div className="mx-auto" style={{ width: '200%', height: 350, maxWidth: '800px' }}>
-                        <ChartContainer config={{}} className="aspect-square h-full">
-                          <PieChart>
-                            <Pie
-                              data={pieData}
-                              nameKey="name"
-                              dataKey="value"
-                              cx="50%"
-                              cy="50%"
-                              outerRadius={120}
-                              label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
-                            >
-                              {pieData.map((entry, index) => (
-                                <Cell key={`cell-${index}`} fill={entry.fill} />
-                              ))}
-                            </Pie>
-                            <Tooltip content={<ChartTooltipContent />} />
-                            <Legend />
-                          </PieChart>
-                        </ChartContainer>
+                      {/* MODIFICATIONS START HERE */}
+                      <div className="flex justify-center"> {/* Added flex and justify-center for explicit centering */}
+                        <div 
+                          className="w-full max-w-lg md:max-w-xl lg:max-w-2xl" // Adjusted width and max-width for more space
+                          style={{ height: 350 }} // Keep height as is
+                        >
+                          <ChartContainer config={{}} className="aspect-square h-full">
+                            <PieChart>
+                              <Pie
+                                data={pieData}
+                                nameKey="name"
+                                dataKey="value"
+                                cx="50%"
+                                cy="50%"
+                                outerRadius={120}
+                                label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
+                              >
+                                {pieData.map((entry, index) => (
+                                  <Cell key={`cell-${index}`} fill={entry.fill} />
+                                ))}
+                              </Pie>
+                              <Tooltip content={<ChartTooltipContent />} />
+                              <Legend />
+                            </PieChart>
+                          </ChartContainer>
+                        </div>
                       </div>
+                      {/* MODIFICATIONS END HERE */}
                     </div>
                     
                     <div className="bg-white p-4 rounded-lg shadow">
@@ -258,6 +265,7 @@ const StatisticsPage: React.FC = () => {
               </div>
             )}
           </CardContent>
+
           
           <CardFooter className="flex justify-center pb-6 pt-2">
             <Button 
