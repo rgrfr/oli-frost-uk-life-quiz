@@ -18,8 +18,8 @@ export const quizSections = [
   "culture & customs",
   "geography & places", 
   "language & social",
-  "nature"
-  "shops & commerce",
+  "nature",
+  "shops & commerce"
 ];
 
 export const questions: Question[] = [
