@@ -56,11 +56,11 @@ const CreditsDialog: React.FC<CreditsDialogProps> = ({
           </div>
           
           <p>
-            This quiz was made to test the street-credibility of Ella, a visiting US guest, after 
-            studying in the UK for several months. But then we thought to give it a wider audience.
+            This quiz was made to test the street-credibility of Ella, a frequent visitor from the USA, after 
+            studying in the UK for several months. But then, without any agenda we thought to give it a wider audience.
           </p>
           <p>
-            Oli F wrote it although he'd sooner be lobbying those able to avert a climate crisis - see his 
+            Oli F wrote it although he'd sooner be imploring those able to avert a climate crisis to get on with it - see his 
             work and award-winning songs at <a 
               href="https://olifro.st" 
               target="_blank" 
@@ -71,7 +71,7 @@ const CreditsDialog: React.FC<CreditsDialogProps> = ({
             </a>.
           </p>
           <p>
-            His dad, Roger F 'coded' the app in lovable.dev - otherwise he blogs about home automation and sensors  
+            His dad, Roger F made the app in lovable.dev - otherwise he dabbles in the technology of home automation and sensors  
             {/* <a 
               href="https://rogerfrost.com" 
               target="_blank" 
