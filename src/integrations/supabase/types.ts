@@ -124,6 +124,130 @@ export type Database = {
         }
         Relationships: []
       }
+      slideshow_configs: {
+        Row: {
+          config: Json
+          created_at: string
+          id: string
+          name: string
+          updated_at: string
+        }
+        Insert: {
+          config: Json
+          created_at?: string
+          id?: string
+          name?: string
+          updated_at?: string
+        }
+        Update: {
+          config?: Json
+          created_at?: string
+          id?: string
+          name?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      welsh_feedback: {
+        Row: {
+          attempt_id: string | null
+          content: string
+          created_at: string
+          id: string
+          is_approved: boolean | null
+          question_id: number | null
+          rating: number
+          user_name: string | null
+        }
+        Insert: {
+          attempt_id?: string | null
+          content: string
+          created_at?: string
+          id?: string
+          is_approved?: boolean | null
+          question_id?: number | null
+          rating: number
+          user_name?: string | null
+        }
+        Update: {
+          attempt_id?: string | null
+          content?: string
+          created_at?: string
+          id?: string
+          is_approved?: boolean | null
+          question_id?: number | null
+          rating?: number
+          user_name?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "welsh_feedback_attempt_id_fkey"
+            columns: ["attempt_id"]
+            isOneToOne: false
+            referencedRelation: "welsh_quiz_attempts"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      welsh_question_results: {
+        Row: {
+          attempt_id: string
+          created_at: string | null
+          id: string
+          is_correct: boolean
+          question_id: number
+          section: string
+        }
+        Insert: {
+          attempt_id: string
+          created_at?: string | null
+          id?: string
+          is_correct: boolean
+          question_id: number
+          section: string
+        }
+        Update: {
+          attempt_id?: string
+          created_at?: string | null
+          id?: string
+          is_correct?: boolean
+          question_id?: number
+          section?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "welsh_question_results_attempt_id_fkey"
+            columns: ["attempt_id"]
+            isOneToOne: false
+            referencedRelation: "welsh_quiz_attempts"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      welsh_quiz_attempts: {
+        Row: {
+          created_at: string
+          id: string
+          score: number
+          score_percentage: number
+          total_questions: number
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          score: number
+          score_percentage: number
+          total_questions: number
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          score?: number
+          score_percentage?: number
+          total_questions?: number
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
