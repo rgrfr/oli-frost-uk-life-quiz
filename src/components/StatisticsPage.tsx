@@ -4,7 +4,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from 'lucide-react';
-import { supabase } from '@/integrations/supabase/client';
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
@@ -35,87 +34,99 @@ const StatisticsPage: React.FC = () => {
     const fetchStatistics = async () => {
       setLoading(true);
       
-      // Fetch all attempts
-      const { data: attempts } = await supabase
-        .from('quiz_attempts')
-        .select('*');
+      try {
+        // Fetch from PHP API
+        const response = await fetch('https://rogerfrost.com/api/get_quiz_attempts.php');
+        const result = await response.json();
         
-      // Fetch all question results
-      const { data: questionResults } = await supabase
-        .from('question_results')
-        .select('*');
-      
-      if (attempts && questionResults) {
-        // Calculate general stats
-        const totalAttempts = attempts.length;
-        const averageScore = totalAttempts > 0 
-          ? attempts.reduce((sum, attempt) => sum + Number(attempt.score_percentage), 0) / totalAttempts 
-          : 0;
-        const highestScore = totalAttempts > 0
-          ? Math.max(...attempts.map(attempt => Number(attempt.score_percentage)))
-          : 0;
-        const lowestScore = totalAttempts > 0
-          ? Math.min(...attempts.map(attempt => Number(attempt.score_percentage)))
-          : 0;
+        if (!response.ok || result.status !== 'success') {
+          throw new Error('Failed to fetch statistics');
+        }
+        
+        const attemptsWithResults = result.data;
+        
+        if (attemptsWithResults && attemptsWithResults.length > 0) {
+          // Calculate general stats
+          const totalAttempts = attemptsWithResults.length;
+          const averageScore = totalAttempts > 0 
+            ? attemptsWithResults.reduce((sum: number, attempt: any) => sum + Number(attempt.score_percentage), 0) / totalAttempts 
+            : 0;
+          const highestScore = totalAttempts > 0
+            ? Math.max(...attemptsWithResults.map((attempt: any) => Number(attempt.score_percentage)))
+            : 0;
+          const lowestScore = totalAttempts > 0
+            ? Math.min(...attemptsWithResults.map((attempt: any) => Number(attempt.score_percentage)))
+            : 0;
           
-        // Calculate question-specific stats
-        const questionsAnalytics: Record<string, { correct: number; total: number; percentage: number }> = {};
-        questionResults.forEach(result => {
-          if (!questionsAnalytics[result.question_id]) {
-            questionsAnalytics[result.question_id] = { correct: 0, total: 0, percentage: 0 };
-          }
+          // Flatten all question results from all attempts
+          const allQuestionResults: any[] = [];
+          attemptsWithResults.forEach((attempt: any) => {
+            if (attempt.results && Array.isArray(attempt.results)) {
+              allQuestionResults.push(...attempt.results);
+            }
+          });
           
-          questionsAnalytics[result.question_id].total += 1;
-          if (result.is_correct) {
-            questionsAnalytics[result.question_id].correct += 1;
-          }
-        });
-        
-        // Calculate percentages
-        Object.keys(questionsAnalytics).forEach(questionId => {
-          const { correct, total } = questionsAnalytics[questionId];
-          questionsAnalytics[questionId].percentage = total > 0 ? (correct / total) * 100 : 0;
-        });
-        
-        // Calculate section performance - normalize section names
-        const sectionData: Record<string, { correct: number; incorrect: number }> = {};
-        questionResults.forEach(result => {
-          // Normalize the section name to handle old "entertainment & culture" references
-          let normalizedSection = result.section;
-          if (normalizedSection.toLowerCase() === 'entertainment & culture') {
-            normalizedSection = 'culture & customs';
-          }
+          // Calculate question-specific stats
+          const questionsAnalytics: Record<string, { correct: number; total: number; percentage: number }> = {};
+          allQuestionResults.forEach(result => {
+            if (!questionsAnalytics[result.question_id]) {
+              questionsAnalytics[result.question_id] = { correct: 0, total: 0, percentage: 0 };
+            }
+            
+            questionsAnalytics[result.question_id].total += 1;
+            if (result.is_correct) {
+              questionsAnalytics[result.question_id].correct += 1;
+            }
+          });
           
-          if (!sectionData[normalizedSection]) {
-            sectionData[normalizedSection] = { correct: 0, incorrect: 0 };
-          }
+          // Calculate percentages
+          Object.keys(questionsAnalytics).forEach(questionId => {
+            const { correct, total } = questionsAnalytics[questionId];
+            questionsAnalytics[questionId].percentage = total > 0 ? (correct / total) * 100 : 0;
+          });
           
-          if (result.is_correct) {
-            sectionData[normalizedSection].correct += 1;
-          } else {
-            sectionData[normalizedSection].incorrect += 1;
-          }
-        });
-        
-        const sectionPerformance = Object.entries(sectionData).map(([name, data]) => {
-          const total = data.correct + data.incorrect;
-          const percentage = total > 0 ? (data.correct / total) * 100 : 0;
-          return {
-            name,
-            correct: data.correct,
-            incorrect: data.incorrect,
-            percentage
-          };
-        }).sort((a, b) => b.percentage - a.percentage);
-        
-        setStatistics({
-          totalAttempts,
-          averageScore,
-          highestScore,
-          lowestScore,
-          questionsAnalytics,
-          sectionPerformance
-        });
+          // Calculate section performance - normalize section names
+          const sectionData: Record<string, { correct: number; incorrect: number }> = {};
+          allQuestionResults.forEach(result => {
+            // Normalize the section name to handle old "entertainment & culture" references
+            let normalizedSection = result.section;
+            if (normalizedSection.toLowerCase() === 'entertainment & culture') {
+              normalizedSection = 'culture & customs';
+            }
+            
+            if (!sectionData[normalizedSection]) {
+              sectionData[normalizedSection] = { correct: 0, incorrect: 0 };
+            }
+            
+            if (result.is_correct) {
+              sectionData[normalizedSection].correct += 1;
+            } else {
+              sectionData[normalizedSection].incorrect += 1;
+            }
+          });
+          
+          const sectionPerformance = Object.entries(sectionData).map(([name, data]) => {
+            const total = data.correct + data.incorrect;
+            const percentage = total > 0 ? (data.correct / total) * 100 : 0;
+            return {
+              name,
+              correct: data.correct,
+              incorrect: data.incorrect,
+              percentage
+            };
+          }).sort((a, b) => b.percentage - a.percentage);
+          
+          setStatistics({
+            totalAttempts,
+            averageScore,
+            highestScore,
+            lowestScore,
+            questionsAnalytics,
+            sectionPerformance
+          });
+        }
+      } catch (error) {
+        console.error('Error fetching statistics:', error);
       }
       
       setLoading(false);

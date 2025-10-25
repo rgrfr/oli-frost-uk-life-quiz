@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { useQuiz } from '@/context/QuizContext';
 import { questions } from '@/data/quizQuestions';
 import { Link } from 'react-router-dom';
-import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 import CreditsDialog from './CreditsDialog';
 import FeedbackForm from './FeedbackForm';
@@ -45,31 +44,10 @@ const ResultsScreen: React.FC<ResultsScreenProps> = ({ onRestartQuiz }) => {
     const saveResults = async () => {
       if (totalAttempted === 0) return;
       
-      // Save the quiz attempt
-      const { data: attemptData, error: attemptError } = await supabase
-        .from('quiz_attempts')
-        .insert({
-          score: score,
-          total_questions: totalAttempted,
-          score_percentage: scorePercentage
-        })
-        .select('id')
-        .single();
+      // Generate UUIDs for attempt and results
+      const attemptId = crypto.randomUUID();
       
-      if (attemptError) {
-        console.error('Error saving quiz attempt:', attemptError);
-        toast({
-          title: "Failed to save results",
-          description: "Your results couldn't be saved to the statistics database.",
-          variant: "destructive"
-        });
-        return;
-      }
-      
-      // Store the attempt ID for feedback submission
-      setQuizAttemptId(attemptData.id);
-      
-      // Save individual question results
+      // Build question results
       const questionResults = checkedQuestions.map(questionId => {
         const question = questions.find(q => q.id === questionId);
         const isCorrect = question ? (selectedAnswers[questionId] && 
@@ -77,21 +55,50 @@ const ResultsScreen: React.FC<ResultsScreenProps> = ({ onRestartQuiz }) => {
             (answer.isCorrect === (selectedAnswers[questionId]?.includes(idx) || false)))) : false;
             
         return {
-          attempt_id: attemptData.id,
+          id: crypto.randomUUID(),
           question_id: questionId,
           section: question?.section || 'unknown',
           is_correct: isCorrect
         };
       });
       
-      if (questionResults.length > 0) {
-        const { error: resultsError } = await supabase
-          .from('question_results')
-          .insert(questionResults);
-          
-        if (resultsError) {
-          console.error('Error saving question results:', resultsError);
+      // Prepare consolidated payload
+      const payload = {
+        attempt: {
+          id: attemptId,
+          score: score,
+          total_questions: totalAttempted,
+          score_percentage: scorePercentage
+        },
+        results: questionResults
+      };
+      
+      // POST to PHP API
+      try {
+        const response = await fetch('https://rogerfrost.com/api/insert_quiz_data.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(payload)
+        });
+        
+        const result = await response.json();
+        
+        if (!response.ok || result.status !== 'success') {
+          throw new Error(result.message || 'Failed to save results');
         }
+        
+        // Store the attempt ID for feedback submission
+        setQuizAttemptId(attemptId);
+        
+      } catch (error) {
+        console.error('Error saving quiz results:', error);
+        toast({
+          title: "Failed to save results",
+          description: "Your results couldn't be saved to the statistics database.",
+          variant: "destructive"
+        });
       }
     };
     
