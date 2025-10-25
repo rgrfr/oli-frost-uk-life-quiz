@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useQuiz } from '@/context/QuizContext';
@@ -7,7 +7,6 @@ import { questions } from '@/data/quizQuestions';
 import { Link } from 'react-router-dom';
 import { useToast } from '@/hooks/use-toast';
 import CreditsDialog from './CreditsDialog';
-import FeedbackForm from './FeedbackForm';
 
 interface ResultsScreenProps {
   onRestartQuiz: () => void;
@@ -16,8 +15,6 @@ interface ResultsScreenProps {
 const ResultsScreen: React.FC<ResultsScreenProps> = ({ onRestartQuiz }) => {
   const { score, totalAttempted, resetQuiz, getScorePercentage, selectedAnswers, checkedQuestions } = useQuiz();
   const { toast } = useToast();
-  const [quizAttemptId, setQuizAttemptId] = useState<string | undefined>(undefined);
-  const [showFeedback, setShowFeedback] = useState(false);
   
   const scorePercentage = getScorePercentage();
   
@@ -89,9 +86,6 @@ const ResultsScreen: React.FC<ResultsScreenProps> = ({ onRestartQuiz }) => {
           throw new Error(result.message || 'Failed to save results');
         }
         
-        // Store the attempt ID for feedback submission
-        setQuizAttemptId(attemptId);
-        
       } catch (error) {
         console.error('Error saving quiz results:', error);
         toast({
@@ -151,18 +145,8 @@ const ResultsScreen: React.FC<ResultsScreenProps> = ({ onRestartQuiz }) => {
               </ul>
             </div>
           </div>
-
-          {/* This section now ONLY contains the FeedbackForm */}
-          {showFeedback && (
-            <div className="mt-6 border-t pt-4">
-              <h3 className="text-lg font-medium mb-4">
-                Share Your Thoughts
-              </h3>
-              <FeedbackForm attemptId={quizAttemptId} />
-            </div>
-          )}
         </CardContent>
- 
+  
         <CardFooter className="flex flex-col justify-center gap-3 pb-6 pt-2">
           {/* Red button (clear result & restart quiz) */}
           <Button 
@@ -171,17 +155,6 @@ const ResultsScreen: React.FC<ResultsScreenProps> = ({ onRestartQuiz }) => {
           >
             clear result & restart quiz
           </Button>
-          
-          {/* Moved white button here, now between red and blue */}
-          {!showFeedback && (
-            <Button 
-              onClick={() => setShowFeedback(true)}
-              variant="outline"
-              className="w-full max-w-xs border-gray-400 text-gray-800 hover:bg-gray-100" 
-            >
-              offer a new question or give feedback
-            </Button>
-          )}
 
           {/* Blue button (view population statistics) */}
           <Link to="/statistics" className="w-full max-w-xs">
